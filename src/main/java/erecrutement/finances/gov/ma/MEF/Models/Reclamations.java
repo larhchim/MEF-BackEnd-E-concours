@@ -1,9 +1,10 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Reclamations {
+public class Reclamations implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

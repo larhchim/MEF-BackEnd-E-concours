@@ -1,6 +1,9 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.util.ArrayList;
@@ -8,9 +11,13 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class Concours implements Serializable {
+    String SomeString = "asd";
 
-public class Concours {
+    public String getSomeString () {        return SomeString ;     }
 
+    public void setSomeString (String SS ) {        SomeString = SS ;   }
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int idConcours;
@@ -21,8 +28,8 @@ public class Concours {
     private Boolean etat;
     private int nombrePostes;
 
-    @Lob
-    private Clob exigences;
+
+    private byte[] exigences;
 
     @ManyToOne()
     @JoinColumn(name = "DirectionId")
@@ -43,7 +50,7 @@ public class Concours {
     @OneToMany(mappedBy = "concours")
     private List<Profils> profils = new ArrayList<>();
 
-    public Concours(Date dateConcours, Date dateLimiteConcours, String intitled, Boolean etat, int nombrePostes, Clob exigences) {
+    public Concours(Date dateConcours, Date dateLimiteConcours, String intitled, Boolean etat, int nombrePostes, byte[] exigences) {
         this.dateConcours = dateConcours;
         this.dateLimiteConcours = dateLimiteConcours;
         this.intitled = intitled;
@@ -104,11 +111,11 @@ public class Concours {
         this.nombrePostes = nombrePostes;
     }
 
-    public Clob getExigences() {
+    public byte[] getExigences() {
         return exigences;
     }
 
-    public void setExigences(Clob exigences) {
+    public void setExigences(byte[] exigences) {
         this.exigences = exigences;
     }
 

@@ -3,11 +3,12 @@ package erecrutement.finances.gov.ma.MEF.Models;
 import jdk.jfr.Enabled;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class AgentsDeSupport {
+public class AgentsDeSupport implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

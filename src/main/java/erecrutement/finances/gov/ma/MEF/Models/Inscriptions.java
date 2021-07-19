@@ -1,12 +1,13 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Inscriptions {
+public class Inscriptions implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

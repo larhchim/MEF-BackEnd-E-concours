@@ -1,12 +1,13 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.util.Date;
 
 @Entity
-public class Resultats {
+public class Resultats implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
