@@ -1,0 +1,13 @@
+{
+"http://localhost:8083/ModifyDir/1"
+"PUT Method modify specific Direction"
+}
+
+{
+    "fonction": "publique",
+    "description": "financiere",
+    "intitled": "Direction des impots",
+    "logo": "https://www.facebook.com",
+    "nom": "financiere",
+    "agentsDeSupports": []
+}

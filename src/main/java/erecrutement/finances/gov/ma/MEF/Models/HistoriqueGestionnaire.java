@@ -1,9 +1,14 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class HistoriqueGestionnaire implements Serializable {
 
@@ -17,8 +22,9 @@ public class HistoriqueGestionnaire implements Serializable {
     private Date dateAction;
     private String tache;
 
-    @ManyToOne()
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "GestionnaireId")
+    @JsonIgnore
     private Gestionnaires gestionnaire;
 
     public HistoriqueGestionnaire(String type, String intitled, String description, Date dateAction, String tache) {
@@ -81,6 +87,7 @@ public class HistoriqueGestionnaire implements Serializable {
         this.tache = tache;
     }
 
+   // @JsonBackReference
     public Gestionnaires getGestionnaire() {
         return gestionnaire;
     }

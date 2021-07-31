@@ -1,0 +1,11 @@
+{
+"http://localhost:8083/AddHistGest/29"
+"Add history gestionnaire to gestionnaire number 29 with follow details"
+}
+    {
+        "type": "test ++",
+        "intitled": "test ++",
+        "description": "test ++",
+        "dateAction": "2021-07-30T12:36:37.000+00:00",
+        "tache": "test ++"
+    }

@@ -1,10 +1,16 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Centres implements Serializable {
 
@@ -17,13 +23,14 @@ public class Centres implements Serializable {
     private String adresse;
     private String salle;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "CentresConcours",
             joinColumns = @JoinColumn(name = "idCentre"),
             inverseJoinColumns = @JoinColumn(name = "idConcours"))
     private List<Concours> concours = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "idVille")
     private Ville ville;
 
@@ -86,6 +93,7 @@ public class Centres implements Serializable {
         this.concours = concours;
     }
 
+   // @JsonBackReference
     public Ville getVille() {
         return ville;
     }

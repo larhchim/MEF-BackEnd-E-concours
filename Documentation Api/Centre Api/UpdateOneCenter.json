@@ -1,0 +1,15 @@
+{
+"http://localhost:8083/UpdateCentre/1"
+"Put Method"
+"To update center must provide follow details only idVille needed for update doesn't affect ville entity in update"
+}
+
+{
+    "longitude": 45.0,
+    "latitude": -45.0,
+    "adresse": "znata 78",
+    "salle": "salle 120",
+    "ville": {
+        "idVille": 1
+    }
+}

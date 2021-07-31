@@ -1,0 +1,25 @@
+{
+"http://localhost:8083/ListDirs"
+"Get Method ListDirs"
+}
+
+[
+    {
+        "id": 1,
+        "fonction": "wxcwxc",
+        "description": "scw",
+        "intitled": "wxcwxc",
+        "logo": "wxc",
+        "nom": "wxc",
+        "agentsDeSupports": []
+    },
+    {
+        "id": 5,
+        "fonction": "sdqqsd",
+        "description": "ersd",
+        "intitled": "qsdqsd",
+        "logo": "qsdqsd",
+        "nom": "qsdqsd",
+        "agentsDeSupports": []
+    }
+]

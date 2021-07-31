@@ -1,11 +1,17 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Inscriptions implements Serializable {
 
@@ -29,7 +35,8 @@ public class Inscriptions implements Serializable {
     private Boolean etatCandidature;
     private String motDePasse;
 
-    @ManyToOne()
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "idConcours")
     private Concours concours;
 
@@ -190,6 +197,7 @@ public class Inscriptions implements Serializable {
         this.motDePasse = motDePasse;
     }
 
+   // @JsonBackReference
     public Concours getConcours() {
         return concours;
     }
@@ -198,6 +206,7 @@ public class Inscriptions implements Serializable {
         this.concours = concours;
     }
 
+   // @JsonManagedReference
     public List<HistoriqueChangementStatus> getHistoriquestatusChange() {
         return historiquestatusChange;
     }
@@ -206,6 +215,7 @@ public class Inscriptions implements Serializable {
         this.historiquestatusChange = historiquestatusChange;
     }
 
+  //  @JsonManagedReference
     public List<FichiersJoints> getFichiers() {
         return fichiers;
     }

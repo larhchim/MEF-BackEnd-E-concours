@@ -1,10 +1,14 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
-import java.sql.Clob;
 
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class FichiersJoints implements Serializable {
 
@@ -14,14 +18,14 @@ public class FichiersJoints implements Serializable {
 
     private String nomFichier;
 
-    @Lob
-    private Clob fichier;
+    private String fichier;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "idInscription")
+    @JsonIgnore
     private Inscriptions inscription;
 
-    public FichiersJoints(String nomFichier, Clob fichier) {
+    public FichiersJoints(String nomFichier, String fichier) {
         this.nomFichier = nomFichier;
         this.fichier = fichier;
     }
@@ -46,14 +50,15 @@ public class FichiersJoints implements Serializable {
         this.nomFichier = nomFichier;
     }
 
-    public Clob getFichier() {
+    public String getFichier() {
         return fichier;
     }
 
-    public void setFichier(Clob fichier) {
+    public void setFichier(String fichier) {
         this.fichier = fichier;
     }
 
+   // @JsonBackReference
     public Inscriptions getInscription() {
         return inscription;
     }

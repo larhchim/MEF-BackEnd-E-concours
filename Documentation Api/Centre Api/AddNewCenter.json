@@ -1,0 +1,15 @@
+{
+"http://localhost:8083/addCentre"
+"POST Method"
+"Add New Center with follow details inculde id of ville"
+}
+
+{
+    "longitude": 89,
+    "latitude": -89.0,
+    "adresse": "Rabat 416",
+    "salle": "salle 228",
+    "ville": {
+        "idVille": 1
+    }
+}

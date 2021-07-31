@@ -1,0 +1,33 @@
+{
+"http://localhost:8083/listCentres"
+"Get Method all Centres"
+}
+
+[
+    {
+        "idCentre": 1,
+        "longitude": 99.0,
+        "latitude": -99.0,
+        "adresse": "znata",
+        "salle": "salle 104",
+        "ville": {
+            "idVille": 1,
+            "latitudeVille": 2.0,
+            "longitudeVille": 12.0,
+            "nomVille": "casa"
+        }
+    },
+    {
+        "idCentre": 2,
+        "longitude": 2.0,
+        "latitude": -56.0,
+        "adresse": "qscscsw",
+        "salle": "gvdfvdsd",
+        "ville": {
+            "idVille": 1,
+            "latitudeVille": 2.0,
+            "longitudeVille": 12.0,
+            "nomVille": "casa"
+        }
+    }
+]

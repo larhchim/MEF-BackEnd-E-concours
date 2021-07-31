@@ -1,0 +1,49 @@
+{
+"http://localhost:8083/addConcours"
+"Post Method add new Concours with other fields"
+}
+
+{
+    "dateConcours": "2021-07-30T00:00:00.000+00:00",
+    "dateLimiteConcours": "2021-08-01T00:00:00.000+00:00",
+    "intitled": "Concours Ministére de l'++++++.................+++++economie et de la reforme et l'administration",
+    "etat": true,
+    "nombrePostes": 400,
+    "exigences": "https://www.financ+++.....................++++++++++++es.gov.men.ma",
+    "direction": {
+        "id": 5
+    },
+    "inscriptions": [],
+    "resultats": null,
+    "centres": [
+        {
+            "idCentre": 1
+        }
+    ],
+    "profils": [
+        {
+            "type": "Dire++..............++++cteur",
+            "intitled": "Directu+++.............++++er 2021",
+            "grades": [
+                {
+                    "intitledGrade": "*8777++++..............++++8** grade"
+                },
+                {
+                    "intitledGrade": "27++++..........+++++emge gr88778***ade"
+                }
+            ]
+        },
+        {
+            "type": "Inge++++++............+++nieurs",
+            "intitled": "Ingen+++.............+++++++ieur 2021",
+            "grades": [
+                {
+                    "intitledGrade": "1er+++............++++++++7e g7r*78*ade"
+                },
+                {
+                    "intitledGrade": "2*7e++++++...........++++me gr**78ade"
+                }
+            ]
+        }
+    ]
+}

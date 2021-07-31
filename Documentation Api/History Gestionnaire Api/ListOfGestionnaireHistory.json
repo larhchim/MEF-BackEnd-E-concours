@@ -1,0 +1,23 @@
+{
+"http://localhost:8083/ListhistGests"
+"GET Method get all history of gestionnaires"
+}
+
+[
+    {
+        "idHistorique": 1,
+        "type": "dfgdg",
+        "intitled": "dfgdf",
+        "description": "fgsdf",
+        "dateAction": "2021-07-30T12:36:37.000+00:00",
+        "tache": "dfgdfg"
+    },
+    {
+        "idHistorique": 2,
+        "type": "sdfsdf",
+        "intitled": "sdfsdfsd",
+        "description": "gdfbdfgsdf",
+        "dateAction": "2021-07-15T12:38:33.000+00:00",
+        "tache": "sdgsdsdfsdfsdf"
+    }
+]

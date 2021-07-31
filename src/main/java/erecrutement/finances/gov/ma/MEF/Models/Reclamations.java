@@ -1,8 +1,13 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Reclamations implements Serializable {
 
@@ -15,8 +20,9 @@ public class Reclamations implements Serializable {
     private int numeroGestionnaire;
     private String intitled;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "idAgentSupport")
+    @JsonIgnore
     private AgentsDeSupport agentsSupports;
 
     public Reclamations(int numeroCandidat, int numeroConcours, int numeroGestionnaire, String intitled) {
@@ -70,6 +76,7 @@ public class Reclamations implements Serializable {
         this.intitled = intitled;
     }
 
+   // @JsonBackReference
     public AgentsDeSupport getAgentsSupports() {
         return agentsSupports;
     }

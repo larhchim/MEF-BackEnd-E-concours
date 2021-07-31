@@ -1,0 +1,18 @@
+{
+"http://localhost:8083/Centre/1"
+"GET specific Center"
+}
+
+{
+    "idCentre": 1,
+    "longitude": 99.0,
+    "latitude": -99.0,
+    "adresse": "znata",
+    "salle": "salle 104",
+    "ville": {
+        "idVille": 1,
+        "latitudeVille": 2.0,
+        "longitudeVille": 12.0,
+        "nomVille": "casa"
+    }
+}

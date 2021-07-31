@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class ProfilsService implements IProfilsServices{
 
+    private ProfilDAO prf;
+
     @Autowired
-    ProfilDAO prf;
+    public void setPrf(ProfilDAO prf) {
+        this.prf = prf;
+    }
 
     @Override
     public List<Profils> TousLesProfils() {

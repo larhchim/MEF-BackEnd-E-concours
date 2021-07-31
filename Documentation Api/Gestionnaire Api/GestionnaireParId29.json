@@ -1,0 +1,466 @@
+{
+"http://localhost:8083/Gestionnaire/29"
+"GET Method"
+}
+
+{
+    "idGestionnaire": 29,
+    "motDePasse": "e30341d96b79ce2ecc32a349d36b45e0",
+    "etatcCompte": true,
+    "habilitation": 0,
+    "login": "larhchim.i.fst@uhp.ac.ma",
+    "directions": [
+        {
+            "id": 1,
+            "fonction": "wxcwxc",
+            "description": "scw",
+            "intitled": "wxcwxc",
+            "logo": "wxc",
+            "nom": "wxc",
+            "cnc": [
+                {
+                    "idConcours": 12,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*xxxxxxxxxxxxxxxxx**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 13,
+                            "type": "xxxxxxxxxxxxxx",
+                            "intitled": "xxxxxxxxxxxxx*",
+                            "grades": []
+                        },
+                        {
+                            "idProfil": 14,
+                            "type": "Technic8xxxxxxxxxxs",
+                            "intitled": "xxxxxxxxxxxxx sp8eci7alisé",
+                            "grades": []
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 23,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 29,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 52,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 53,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 30,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 54,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 55,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 24,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 31,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 56,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 57,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 32,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 58,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 59,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 25,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 33,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 60,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 61,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 34,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 62,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 63,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 26,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 35,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 64,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 65,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 36,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 66,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 67,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 27,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 37,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 68,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 69,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 38,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 70,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 71,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 28,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 39,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 72,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 73,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 40,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 74,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 75,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 29,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 41,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 76,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 77,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 42,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 78,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 79,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 30,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 43,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 80,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 81,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 44,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 82,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 83,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "idConcours": 31,
+                    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+                    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+                    "intitled": "****77777******",
+                    "etat": true,
+                    "nombrePostes": 2115,
+                    "exigences": "https://www.*88777**.co   m",
+                    "inscriptions": [],
+                    "resultats": null,
+                    "centres": [],
+                    "profils": [
+                        {
+                            "idProfil": 45,
+                            "type": "g877788",
+                            "intitled": "Inggenieurs d'777**88*",
+                            "grades": [
+                                {
+                                    "id": 84,
+                                    "intitledGrade": "*87778** grade"
+                                },
+                                {
+                                    "id": 85,
+                                    "intitledGrade": "27emge gr88778***ade"
+                                }
+                            ]
+                        },
+                        {
+                            "idProfil": 46,
+                            "type": "Technic888*77*iens",
+                            "intitled": "Technicie7ns sp8eci7alisé",
+                            "grades": [
+                                {
+                                    "id": 86,
+                                    "intitledGrade": "1er7e g7r*78*ade"
+                                },
+                                {
+                                    "id": 87,
+                                    "intitledGrade": "2*7eme gr**78ade"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "agentsDeSupports": []
+        }
+    ],
+    "historyGest": [
+        {
+            "idHistorique": 1,
+            "type": "dfgdg",
+            "intitled": "dfgdf",
+            "description": "fgsdf",
+            "dateAction": "2021-07-30T12:36:37.000+00:00",
+            "tache": "dfgdfg"
+        },
+        {
+            "idHistorique": 2,
+            "type": "sdfsdf",
+            "intitled": "sdfsdfsd",
+            "description": "gdfbdfgsdf",
+            "dateAction": "2021-07-15T12:38:33.000+00:00",
+            "tache": "sdgsdsdfsdfsdf"
+        }
+    ],
+    "administrator": true
+}

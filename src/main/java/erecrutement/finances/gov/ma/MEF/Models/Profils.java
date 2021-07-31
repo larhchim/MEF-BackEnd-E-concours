@@ -1,10 +1,16 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Profils implements Serializable {
 
@@ -15,13 +21,14 @@ public class Profils implements Serializable {
     private String type;
     private String intitled;
 
-    @ManyToOne()
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "idConcours")
     private Concours concours;
 
 
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "GradesDesProfils",
     joinColumns = @JoinColumn(name = "idProfil"),
     inverseJoinColumns = @JoinColumn(name = "id_Grade"))
@@ -60,6 +67,7 @@ public class Profils implements Serializable {
         this.intitled = intitled;
     }
 
+    //@JsonBackReference
     public Concours getConcours() {
         return concours;
     }

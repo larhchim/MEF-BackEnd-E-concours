@@ -1,0 +1,21 @@
+{
+"http://localhost:8083/UpdateGest/29"
+"PUT Method"
+"I update all fields and I add the person to direction number 5 it was only 1"
+}
+
+
+{
+        "etatcCompte": true,
+        "habilitation": 1,
+        "login": "larhchim.i.fst@uhp.ac.ma",
+        "administrator": true,
+        "directions": [
+            {
+                "id": 5
+            },
+            {
+                "id": 1
+            }
+        ]
+}

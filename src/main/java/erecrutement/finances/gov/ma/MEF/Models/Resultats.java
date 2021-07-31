@@ -1,11 +1,15 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
-import java.sql.Clob;
+
 import java.util.Date;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Resultats implements Serializable {
 
@@ -16,19 +20,17 @@ public class Resultats implements Serializable {
     private Date dateConcours;
     private int nombrePostes;
 
-    @Lob
-    private Clob candidatsConvoques;
+    private String candidatsConvoques;
 
-    @Lob
-    private Clob resultatsEcrit;
+    private String resultatsEcrit;
 
-    @Lob
-    private Clob resultatsDefenitifs;
+    private String resultatsDefenitifs;
 
-    @OneToOne(targetEntity = Concours.class)
+    @OneToOne(targetEntity = Concours.class,cascade=CascadeType.ALL)
+    @JsonIgnore
     private Concours concours;
 
-    public Resultats(Date dateConcours, int nombrePostes, Clob candidatsConvoques, Clob resultatsEcrit, Clob resultatsDefenitifs) {
+    public Resultats(Date dateConcours, int nombrePostes, String candidatsConvoques, String resultatsEcrit, String resultatsDefenitifs) {
         this.dateConcours = dateConcours;
         this.nombrePostes = nombrePostes;
         this.candidatsConvoques = candidatsConvoques;
@@ -64,30 +66,31 @@ public class Resultats implements Serializable {
         this.nombrePostes = nombrePostes;
     }
 
-    public Clob getCandidatsConvoques() {
+    public String getCandidatsConvoques() {
         return candidatsConvoques;
     }
 
-    public void setCandidatsConvoques(Clob candidatsConvoques) {
+    public void setCandidatsConvoques(String candidatsConvoques) {
         this.candidatsConvoques = candidatsConvoques;
     }
 
-    public Clob getResultatsEcrit() {
+    public String getResultatsEcrit() {
         return resultatsEcrit;
     }
 
-    public void setResultatsEcrit(Clob resultatsEcrit) {
+    public void setResultatsEcrit(String resultatsEcrit) {
         this.resultatsEcrit = resultatsEcrit;
     }
 
-    public Clob getResultatsDefenitifs() {
+    public String getResultatsDefenitifs() {
         return resultatsDefenitifs;
     }
 
-    public void setResultatsDefenitifs(Clob resultatsDefenitifs) {
+    public void setResultatsDefenitifs(String resultatsDefenitifs) {
         this.resultatsDefenitifs = resultatsDefenitifs;
     }
 
+   // @JsonBackReference
     public Concours getConcours() {
         return concours;
     }

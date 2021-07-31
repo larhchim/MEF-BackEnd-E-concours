@@ -1,0 +1,17 @@
+{
+"http://localhost:8083/AddGest"
+"POST Method"
+"Specify direction ids of the person and other fields"
+}
+
+{
+        "etatcCompte": false,
+        "habilitation": 0,
+        "login": "larhchim.i.fst@uhp.ac.ma",
+        "administrator": true,
+        "directions": [
+            {
+                "id": 1
+            }
+        ]
+}

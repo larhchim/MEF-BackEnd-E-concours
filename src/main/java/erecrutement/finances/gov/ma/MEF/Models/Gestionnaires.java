@@ -1,10 +1,15 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Gestionnaires implements Serializable {
 
@@ -16,7 +21,7 @@ public class Gestionnaires implements Serializable {
     private Boolean etatcCompte;
     private Boolean isAdministrator;
     private int habilitation;
-    private int login;
+    private String login;
 
     @ManyToMany()
     @JoinTable(name = "DirectionsGestionnaires",
@@ -28,7 +33,7 @@ public class Gestionnaires implements Serializable {
     private List<HistoriqueGestionnaire> historyGest = new ArrayList<>();
 
 
-    public Gestionnaires(String motDePasse, Boolean etatcCompte, Boolean isAdministrator, int habilitation, int login) {
+    public Gestionnaires(String motDePasse, Boolean etatcCompte, Boolean isAdministrator, int habilitation, String login) {
         this.motDePasse = motDePasse;
         this.etatcCompte = etatcCompte;
         this.isAdministrator = isAdministrator;
@@ -72,11 +77,11 @@ public class Gestionnaires implements Serializable {
         this.habilitation = habilitation;
     }
 
-    public int getLogin() {
+    public String getLogin() {
         return login;
     }
 
-    public void setLogin(int login) {
+    public void setLogin(String login) {
         this.login = login;
     }
 
@@ -96,6 +101,7 @@ public class Gestionnaires implements Serializable {
         this.directions = directions;
     }
 
+  //  @JsonManagedReference
     public List<HistoriqueGestionnaire> getHistoryGest() {
         return historyGest;
     }

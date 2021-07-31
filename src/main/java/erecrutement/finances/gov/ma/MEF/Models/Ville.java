@@ -1,9 +1,14 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Ville implements Serializable {
 
@@ -16,6 +21,7 @@ public class Ville implements Serializable {
     private String nomVille;
 
     @OneToMany(mappedBy = "ville")
+    @JsonIgnore
     private List<Centres> centres;
 
     public Ville(double latitudeVille, double longitudeVille, String nomVille) {
@@ -60,6 +66,7 @@ public class Ville implements Serializable {
         this.nomVille = nomVille;
     }
 
+   // @JsonManagedReference
     public List<Centres> getCentres() {
         return centres;
     }

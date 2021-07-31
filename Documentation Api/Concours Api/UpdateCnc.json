@@ -1,0 +1,66 @@
+{
+"http://localhost:8083/updateConc/23"
+"PUT Method"
+"Update of cnc number 23 without affecting direction fields and center fields updated only other fields and profils fields"
+}
+
+{
+    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+    "intitled": "cnc 23",
+    "etat": true,
+    "nombrePostes": 23,
+    "exigences": "cnc 23",
+    "direction": {
+        "id": 5,
+        "fonction": "cnc 23",
+        "description": "cnc 23",
+        "intitled": "cnc 23",
+        "logo": "cnc 23",
+        "nom": "cnc 23",
+        "agentsDeSupports": []
+    },
+    "inscriptions": [],
+    "resultats": null,
+    "centres": [
+        {
+            "idCentre": 2,
+            "longitude": 23.0,
+            "latitude": 23.0,
+            "adresse": "23",
+            "salle": "23"
+        }
+    ],
+    "profils": [
+        {
+            "idProfil": 29,
+            "type": "23",
+            "intitled": "23 d'23**88*",
+            "grades": [
+                {
+                    "id": 52,
+                    "intitledGrade": "*23** grade"
+                },
+                {
+                    "id": 53,
+                    "intitledGrade": "23 gr88778***ade"
+                }
+            ]
+        },
+        {
+            "idProfil": 30,
+            "type": "23*77*iens",
+            "intitled": "23 sp8eci7alisé",
+            "grades": [
+                {
+                    "id": 54,
+                    "intitledGrade": "23 g7r*78*ade"
+                },
+                {
+                    "id": 55,
+                    "intitledGrade": "23"
+                }
+            ]
+        }
+    ]
+}

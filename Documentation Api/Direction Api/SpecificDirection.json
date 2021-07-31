@@ -1,0 +1,14 @@
+{
+"http://localhost:8083/Directions/1"
+"Get Method specific Directions"
+}
+
+{
+    "id": 1,
+    "fonction": "wxcwxc",
+    "description": "scw",
+    "intitled": "wxcwxc",
+    "logo": "wxc",
+    "nom": "wxc",
+    "agentsDeSupports": []
+}

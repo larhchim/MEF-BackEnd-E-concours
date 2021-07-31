@@ -1,23 +1,17 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
-import java.sql.Clob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Concours implements Serializable {
-    String SomeString = "asd";
 
-    public String getSomeString () {        return SomeString ;     }
-
-    public void setSomeString (String SS ) {        SomeString = SS ;   }
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int idConcours;
@@ -29,7 +23,7 @@ public class Concours implements Serializable {
     private int nombrePostes;
 
 
-    private byte[] exigences;
+    private String exigences;
 
     @ManyToOne()
     @JoinColumn(name = "DirectionId")
@@ -38,19 +32,20 @@ public class Concours implements Serializable {
     @OneToMany(mappedBy = "concours")
     private List<Inscriptions> inscriptions = new ArrayList<>();
 
-    @OneToOne(targetEntity = Resultats.class)
+    @OneToOne(targetEntity = Resultats.class,cascade=CascadeType.ALL)
     private Resultats resultats;
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(name = "CentresConcours",
     joinColumns = @JoinColumn(name = "idConcours"),
     inverseJoinColumns = @JoinColumn(name = "idCentre"))
     private List<Centres> centres = new ArrayList<>();
 
+
     @OneToMany(mappedBy = "concours")
     private List<Profils> profils = new ArrayList<>();
 
-    public Concours(Date dateConcours, Date dateLimiteConcours, String intitled, Boolean etat, int nombrePostes, byte[] exigences) {
+    public Concours(Date dateConcours, Date dateLimiteConcours, String intitled, Boolean etat, int nombrePostes, String exigences) {
         this.dateConcours = dateConcours;
         this.dateLimiteConcours = dateLimiteConcours;
         this.intitled = intitled;
@@ -111,14 +106,15 @@ public class Concours implements Serializable {
         this.nombrePostes = nombrePostes;
     }
 
-    public byte[] getExigences() {
+    public String getExigences() {
         return exigences;
     }
 
-    public void setExigences(byte[] exigences) {
+    public void setExigences(String exigences) {
         this.exigences = exigences;
     }
 
+   // @JsonBackReference
     public Directions getDirection() {
         return direction;
     }
@@ -127,6 +123,7 @@ public class Concours implements Serializable {
         this.direction = direction;
     }
 
+   // @JsonManagedReference
     public List<Inscriptions> getInscriptions() {
         return inscriptions;
     }
@@ -135,6 +132,7 @@ public class Concours implements Serializable {
         this.inscriptions = inscriptions;
     }
 
+    //@JsonBackReference
     public Resultats getResultats() {
         return resultats;
     }
@@ -151,6 +149,7 @@ public class Concours implements Serializable {
         this.centres = centres;
     }
 
+    //@JsonManagedReference
     public List<Profils> getProfils() {
         return profils;
     }

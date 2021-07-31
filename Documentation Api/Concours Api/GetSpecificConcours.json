@@ -1,0 +1,124 @@
+{
+"http://localhost:8083/cncs/30"
+"Get Method"
+}
+
+{
+    "idConcours": 30,
+    "dateConcours": "2028-07-21T02:04:54.000+00:00",
+    "dateLimiteConcours": "2029-07-31T20:59:33.000+00:00",
+    "intitled": "****77777******",
+    "etat": true,
+    "nombrePostes": 2115,
+    "exigences": "https://www.*88777**.co   m",
+    "direction": {
+        "id": 1,
+        "fonction": "wxcwxc",
+        "description": "scw",
+        "intitled": "wxcwxc",
+        "logo": "wxc",
+        "nom": "wxc",
+        "agentsDeSupports": []
+    },
+    "inscriptions": [],
+    "resultats": null,
+    "centres": [],
+    "profils": [
+        {
+            "idProfil": 43,
+            "type": "g877788",
+            "intitled": "Inggenieurs d'777**88*",
+            "grades": [
+                {
+                    "id": 80,
+                    "intitledGrade": "*87778** grade"
+                },
+                {
+                    "id": 81,
+                    "intitledGrade": "27emge gr88778***ade"
+                }
+            ]
+        },
+        {
+            "idProfil": 44,
+            "type": "Technic888*77*iens",
+            "intitled": "Technicie7ns sp8eci7alisé",
+            "grades": [
+                {
+                    "id": 82,
+                    "intitledGrade": "1er7e g7r*78*ade"
+                },
+                {
+                    "id": 83,
+                    "intitledGrade": "2*7eme gr**78ade"
+                }
+            ]
+        }
+    ]
+}
+
+
+
+
+
+{
+    "idConcours": 32,
+    "dateConcours": "2021-07-30T00:00:00.000+00:00",
+    "dateLimiteConcours": "2021-08-01T00:00:00.000+00:00",
+    "intitled": "Concours Ministére de l'economie et de la reforme et l'administration",
+    "etat": true,
+    "nombrePostes": 400,
+    "exigences": "https://www.finances.gov.men.ma",
+    "direction": {
+        "id": 1,
+        "fonction": "wxcwxc",
+        "description": "scw",
+        "intitled": "wxcwxc",
+        "logo": "wxc",
+        "nom": "wxc",
+        "agentsDeSupports": []
+    },
+    "inscriptions": [],
+    "resultats": null,
+    "centres": [
+        {
+            "idCentre": 1,
+            "longitude": 21.0,
+            "latitude": 154.0,
+            "adresse": "sd",
+            "salle": "s"
+        }
+    ],
+    "profils": [
+        {
+            "idProfil": 47,
+            "type": "Directeur",
+            "intitled": "Directuer 2021",
+            "grades": [
+                {
+                    "id": 88,
+                    "intitledGrade": "*87778** grade"
+                },
+                {
+                    "id": 89,
+                    "intitledGrade": "27emge gr88778***ade"
+                }
+            ]
+        },
+        {
+            "idProfil": 48,
+            "type": "Ingenieurs",
+            "intitled": "Ingenieur 2021",
+            "grades": [
+                {
+                    "id": 90,
+                    "intitledGrade": "1er7e g7r*78*ade"
+                },
+                {
+                    "id": 91,
+                    "intitledGrade": "2*7eme gr**78ade"
+                }
+            ]
+        }
+    ]
+}

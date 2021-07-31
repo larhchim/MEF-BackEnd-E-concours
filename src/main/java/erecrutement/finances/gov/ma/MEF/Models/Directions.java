@@ -1,5 +1,9 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Blob;
@@ -7,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Directions implements Serializable {
 
-    @Id()
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DirectionId")
     private int id;
@@ -19,15 +24,16 @@ public class Directions implements Serializable {
     private String description;
     private String intitled;
 
-    @Lob
-    private Blob logo;
+    private String logo;
 
     private String nom;
 
-    @OneToMany(mappedBy = "direction")
+    @OneToMany(mappedBy = "direction",cascade=CascadeType.ALL)
+    @JsonIgnore
     private List<Concours> cnc;
 
     @ManyToMany()
+    @JsonIgnore
     @JoinTable(name = "DirectionsGestionnaires",
     joinColumns = @JoinColumn(name = "DirectionId"),
     inverseJoinColumns = @JoinColumn(name = "GestionnaireId"))
@@ -36,7 +42,7 @@ public class Directions implements Serializable {
     @OneToMany(mappedBy = "direction")
     private List<AgentsDeSupport> agentsDeSupports = new ArrayList<>();
 
-    public Directions(String fonction, String description, String intitled, Blob logo, String nom) {
+    public Directions(String fonction, String description, String intitled, String logo, String nom) {
         this.fonction = fonction;
         this.description = description;
         this.intitled = intitled;
@@ -80,11 +86,11 @@ public class Directions implements Serializable {
         this.intitled = intitled;
     }
 
-    public Blob getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(Blob logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
     }
 
@@ -96,6 +102,7 @@ public class Directions implements Serializable {
         this.nom = nom;
     }
 
+   // @JsonManagedReference
     public List<Concours> getCnc() {
         return cnc;
     }
@@ -112,6 +119,7 @@ public class Directions implements Serializable {
         this.gest = gest;
     }
 
+   // @JsonManagedReference
     public List<AgentsDeSupport> getAgentsDeSupports() {
         return agentsDeSupports;
     }

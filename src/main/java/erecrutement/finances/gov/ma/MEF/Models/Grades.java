@@ -1,10 +1,15 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Grades implements Serializable {
 
@@ -15,8 +20,8 @@ public class Grades implements Serializable {
 
     private String intitledGrade;
 
-
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "GradesDesProfils",
             joinColumns = @JoinColumn(name = "id_Grade"),
             inverseJoinColumns = @JoinColumn(name = "idProfil"))

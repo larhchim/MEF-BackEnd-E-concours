@@ -1,0 +1,13 @@
+{
+"http://localhost:8083/AddDirs"
+"POST Method add new Direction"
+}
+
+{
+    "fonction": "privée",
+    "description": "financiere",
+    "intitled": "Direction des achats",
+    "logo": "https://www.facebook.com",
+    "nom": "achats"
+    
+}

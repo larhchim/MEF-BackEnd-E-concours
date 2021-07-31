@@ -1,9 +1,14 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class HistoriqueChangementStatus implements Serializable {
 
@@ -14,8 +19,9 @@ public class HistoriqueChangementStatus implements Serializable {
     private Date dateAction;
     private String description;
 
-    @ManyToOne()
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "idInscription")
+    @JsonIgnore
     private Inscriptions inscription;
 
     public HistoriqueChangementStatus(Date dateAction, String description) {
@@ -51,6 +57,7 @@ public class HistoriqueChangementStatus implements Serializable {
         this.description = description;
     }
 
+   // @JsonBackReference
     public Inscriptions getInscription() {
         return inscription;
     }
