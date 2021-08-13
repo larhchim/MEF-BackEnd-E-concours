@@ -1,9 +1,11 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
+import erecrutement.finances.gov.ma.MEF.Models.Directions;
 import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
 import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import erecrutement.finances.gov.ma.MEF.Services.IGestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +59,16 @@ public class RestGestionnaireController implements IController<Gestionnaires>{
 
         return new ResponseEntity<Gestionnaires>(gest.ModifyGestionnaire(cnc,id), HttpStatus.OK);
 
+    }
+
+    @Override
+    @GetMapping(path="SearchGestionnaires",produces= {"application/json"})
+    public Page<Gestionnaires> chercher(
+            @RequestParam(name = "mc",defaultValue = "") String mc,
+            @RequestParam(name = "page",defaultValue = "0") int page,
+            @RequestParam(name = "size",defaultValue = "5") int size
+    ) {
+        return gest.chercher("%"+mc+"%",page,size);
     }
 
 }

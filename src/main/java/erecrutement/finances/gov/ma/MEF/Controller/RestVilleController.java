@@ -1,9 +1,11 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
+import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
 import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import erecrutement.finances.gov.ma.MEF.Models.Ville;
 import erecrutement.finances.gov.ma.MEF.Services.InterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +52,16 @@ public class RestVilleController implements IController<Ville>{
     @PutMapping(path="UpdateVille/{id}",consumes = {"application/json;charset=UTF-8"} ,produces = {"application/json;charset=UTF-8"})
     public ResponseEntity<Ville> ModifyObject(Ville cnc, int id) {
         return new ResponseEntity<Ville>(ville.ModifyObjet(cnc, id), HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping(path="SearchVilles",produces= {"application/json"})
+    public Page<Ville> chercher(
+            @RequestParam(name = "mc",defaultValue = "") String mc,
+            @RequestParam(name = "page",defaultValue = "0") int page,
+            @RequestParam(name = "size",defaultValue = "5") int size
+    ) {
+        return ville.chercher("%"+mc+"%",page,size);
     }
 
 

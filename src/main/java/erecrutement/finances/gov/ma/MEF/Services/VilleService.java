@@ -3,6 +3,8 @@ package erecrutement.finances.gov.ma.MEF.Services;
 import erecrutement.finances.gov.ma.MEF.DAO.VilleDAO;
 import erecrutement.finances.gov.ma.MEF.Models.Ville;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +42,11 @@ public class VilleService implements InterfaceService<Ville>{
     @Override
     public Optional<Ville> leComposant(int id) {
         return vl.findById(id);
+    }
+
+    @Override
+    public Page<Ville> chercher(String mc, int page, int size) {
+        return vl.search(mc, PageRequest.of(page, size));
     }
 
 }

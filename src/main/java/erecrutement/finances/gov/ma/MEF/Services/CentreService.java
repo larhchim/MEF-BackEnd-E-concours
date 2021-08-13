@@ -3,6 +3,8 @@ package erecrutement.finances.gov.ma.MEF.Services;
 import erecrutement.finances.gov.ma.MEF.DAO.CentresDAO;
 import erecrutement.finances.gov.ma.MEF.Models.Centres;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,5 +43,10 @@ public class CentreService implements InterfaceService<Centres>{
     @Override
     public Optional<Centres> leComposant(int id) {
         return cen.findById(id);
+    }
+
+    @Override
+    public Page<Centres> chercher(String mc, int page, int size) {
+        return cen.search(mc, PageRequest.of(page, size));
     }
 }

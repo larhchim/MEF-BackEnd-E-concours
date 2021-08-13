@@ -5,6 +5,8 @@ import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import erecrutement.finances.gov.ma.MEF.Services.DirectionService;
 import erecrutement.finances.gov.ma.MEF.Services.InterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,4 +53,15 @@ public class RestDirectionsController implements IController<Directions>{
     public ResponseEntity<Directions> ModifyObject(Directions cnc, int id) {
         return new ResponseEntity<Directions>(dirs.ModifyObjet(cnc, id),HttpStatus.OK);
     }
+
+    @Override
+    @GetMapping(path="SearchDirections",produces= {"application/json"})
+    public Page<Directions> chercher(
+            @RequestParam(name = "mc",defaultValue = "") String mc,
+            @RequestParam(name = "page",defaultValue = "0") int page,
+            @RequestParam(name = "size",defaultValue = "5") int size
+    ) {
+        return dirs.chercher("%"+mc+"%",page,size);
+    }
+
 }

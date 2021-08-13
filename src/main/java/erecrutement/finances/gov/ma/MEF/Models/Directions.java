@@ -21,6 +21,8 @@ public class Directions implements Serializable {
     private int id;
 
     private String fonction;
+    @Lob
+    @Column(name="description", length=99999)
     private String description;
     private String intitled;
 

@@ -7,6 +7,7 @@ import erecrutement.finances.gov.ma.MEF.Services.HistoryGestionnaireService;
 import erecrutement.finances.gov.ma.MEF.Services.IGestionnaireService;
 import erecrutement.finances.gov.ma.MEF.Services.InterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +61,11 @@ public class RestHistoryGestController implements IController<HistoriqueGestionn
     @PutMapping(path="UpdateHistGest/{id}",consumes = {"application/json;charset=UTF-8"} ,produces = {"application/json;charset=UTF-8"})
     public ResponseEntity<HistoriqueGestionnaire> ModifyObject(HistoriqueGestionnaire cnc, int id) {
         return new ResponseEntity<HistoriqueGestionnaire>(histGest.ModifyObjet(cnc, id), HttpStatus.OK);
+    }
+
+    @Override
+    public Page<HistoriqueGestionnaire> chercher(String mc, int page, int size) {
+        return null;
     }
 
     @Override

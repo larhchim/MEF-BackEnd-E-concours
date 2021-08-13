@@ -9,6 +9,8 @@ import erecrutement.finances.gov.ma.MEF.DAO.GradeDAO;
 import erecrutement.finances.gov.ma.MEF.DAO.ProfilDAO;
 import erecrutement.finances.gov.ma.MEF.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -74,11 +76,11 @@ public class ConcoursService implements IConcoursService{
             //g.setDirection(dir.getById(1));
             cnc.save(g);
 
-            List<Profils> t = g.getProfils();
+            /*List<Profils> t = g.getProfils();
             for (Profils p:t) {
                 p.setConcours(g);
                 pfl.save(p);
-            }
+            }*/
 
 
 
@@ -105,14 +107,14 @@ public class ConcoursService implements IConcoursService{
                 f.setConcours(g);
                 pfl.save(f);
             }*/
-            List<Profils> t = g.getProfils();
+           /* List<Profils> t = g.getProfils();
             for (Profils p:t) {
                 for (Grades r:p.getGrades()) {
                     grd.save(r);
                 }
                 p.setConcours(g);
                 pfl.save(p);
-            }
+            }*/
 
         }catch (Exception e){
             e.printStackTrace();
@@ -178,5 +180,10 @@ System.out.println("lwla daz***");
 
         }
         return cnc.findById(id);
+    }
+
+    @Override
+    public Page<Concours> chercher(String mc, int page, int size) {
+        return cnc.search(mc, PageRequest.of(page,size));
     }
 }

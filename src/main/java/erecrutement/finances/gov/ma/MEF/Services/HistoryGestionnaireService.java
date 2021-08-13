@@ -3,6 +3,7 @@ package erecrutement.finances.gov.ma.MEF.Services;
 import erecrutement.finances.gov.ma.MEF.DAO.HistoriqueGestionnaireDAO;
 import erecrutement.finances.gov.ma.MEF.Models.HistoriqueGestionnaire;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +41,10 @@ public class HistoryGestionnaireService implements InterfaceService<HistoriqueGe
     @Override
     public Optional<HistoriqueGestionnaire> leComposant(int id) {
         return his.findById(id);
+    }
+
+    @Override
+    public Page<HistoriqueGestionnaire> chercher(String mc, int page, int size) {
+        return null;
     }
 }

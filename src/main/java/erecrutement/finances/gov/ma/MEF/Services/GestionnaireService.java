@@ -6,6 +6,8 @@ import erecrutement.finances.gov.ma.MEF.Models.Directions;
 import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
 import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,10 +69,14 @@ public class GestionnaireService implements IGestionnaireService{
         Sending true pass through email adress g.getEmail
          */
 
-        email.sendEmail(g.getLogin(),"E-concours platform Authentification Credentials",
-                "" +"These are your credentials for authentification <br/>"+
-                        "Login: "+g.getLogin()+"" +
-                        "Password: "+mot+"");
+
+        email.sendEmail(g.getLogin(),"<b>E-concours platform Authentification Credentials</b>",
+                "" +"<b>These are your credentials for authentification</b> <br>"+
+                        "<b><font color=red>Login: </font>"+g.getLogin()+"</b><br>" +
+                        "<b><font color=red>Password: </font>"+mot+"</b>");
+
+        /*email.sendEmailwithAttachment(g.getLogin(),"<b>E-concours platform Authentification Credentials</b>","<b><font color=red>Login: </font>"+g.getLogin()+"</b><br>" +
+                "<b><font color=red>Password: </font>"+mot+"</b>","");*/
 
         g.setMotDePasse(pass);
         gt.save(g);
@@ -121,5 +127,10 @@ public class GestionnaireService implements IGestionnaireService{
 
     public Optional<Gestionnaires> leGestionnaire(int id) {
         return gt.findById(id);
+    }
+
+    @Override
+    public Page<Gestionnaires> chercher(String mc, int page, int size) {
+        return gt.search(mc, PageRequest.of(page, size));
     }
 }

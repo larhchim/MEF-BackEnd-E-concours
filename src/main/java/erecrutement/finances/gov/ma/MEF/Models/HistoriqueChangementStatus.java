@@ -16,7 +16,10 @@ public class HistoriqueChangementStatus implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHistoryStatus;
 
+    @Temporal(TemporalType.DATE)
     private Date dateAction;
+
+
     private String description;
 
     @ManyToOne(cascade=CascadeType.ALL)

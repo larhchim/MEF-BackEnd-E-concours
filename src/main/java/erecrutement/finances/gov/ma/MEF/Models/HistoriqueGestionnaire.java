@@ -19,7 +19,10 @@ public class HistoriqueGestionnaire implements Serializable {
     private String type;
     private String intitled;
     private String description;
+
+    @Temporal(TemporalType.DATE)
     private Date dateAction;
+
     private String tache;
 
     @ManyToOne(cascade=CascadeType.ALL)

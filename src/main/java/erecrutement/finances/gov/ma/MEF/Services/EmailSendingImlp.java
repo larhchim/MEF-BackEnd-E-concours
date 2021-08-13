@@ -36,7 +36,7 @@ public class EmailSendingImlp implements IEmailSending{
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
 
-            message.setContent("<h1>E-Concours Computer science service delivery</h1>",
+            message.setContent(message,
             "text/html" );
 
             MimeMessageHelper messageHelper =

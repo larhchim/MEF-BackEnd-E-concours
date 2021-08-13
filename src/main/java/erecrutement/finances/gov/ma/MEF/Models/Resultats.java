@@ -17,7 +17,9 @@ public class Resultats implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idResultats;
 
+    @Temporal(TemporalType.DATE)
     private Date dateConcours;
+
     private int nombrePostes;
 
     private String candidatsConvoques;

@@ -3,6 +3,8 @@ package erecrutement.finances.gov.ma.MEF.Services;
 import erecrutement.finances.gov.ma.MEF.DAO.DirectionsDAO;
 import erecrutement.finances.gov.ma.MEF.Models.Directions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +43,13 @@ public class DirectionService implements InterfaceService<Directions>{
     @Override
     public Optional<Directions> leComposant(int id) {
         return dir.findById(id);
+    }
+
+    @Override
+    public Page<Directions> chercher(String mc, int page, int size) {
+
+        return dir.search(mc,PageRequest.of(page, size));
+
     }
 
 }

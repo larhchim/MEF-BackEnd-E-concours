@@ -1,11 +1,13 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
 import erecrutement.finances.gov.ma.MEF.Models.Concours;
+import erecrutement.finances.gov.ma.MEF.Models.Directions;
 import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
 import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import erecrutement.finances.gov.ma.MEF.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @org.springframework.web.bind.annotation.RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class RestConcoursController {
 
     private IConcoursService cncs;
@@ -84,6 +87,16 @@ public class RestConcoursController {
         return new ResponseEntity<Concours>(cncs.ModifyConcours(cnc,aid), HttpStatus.OK);
 
     }
+
+    @GetMapping(path="SearchConcours",produces= {"application/json"})
+    public Page<Concours> chercher(
+            @RequestParam(name = "mc",defaultValue = "") String mc,
+            @RequestParam(name = "page",defaultValue = "0") int page,
+            @RequestParam(name = "size",defaultValue = "5") int size
+    ) {
+        return cncs.chercher("%"+mc+"%",page,size);
+    }
+
 
 
 

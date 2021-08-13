@@ -31,7 +31,11 @@ public class Inscriptions implements Serializable {
     private String diplomeObtenue;
     private String etablissement;
     private Boolean status;
+
+    @Temporal(TemporalType.DATE)
     private Date dateCandidature;
+
+
     private Boolean etatCandidature;
     private String motDePasse;
 

@@ -16,8 +16,14 @@ public class Concours implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int idConcours;
 
+    @Temporal(TemporalType.DATE)
     private Date dateConcours;
+
+    @Temporal(TemporalType.DATE)
+    private Date datePassage;
+
     private Date dateLimiteConcours;
+
     private String intitled;
     private Boolean etat;
     private int nombrePostes;
@@ -42,7 +48,10 @@ public class Concours implements Serializable {
     private List<Centres> centres = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "concours")
+    @ManyToMany()
+    @JoinTable(name = "ProfilsConcours",
+    joinColumns = @JoinColumn(name = "idConcours"),
+    inverseJoinColumns = @JoinColumn(name = "idProfil"))
     private List<Profils> profils = new ArrayList<>();
 
     public Concours(Date dateConcours, Date dateLimiteConcours, String intitled, Boolean etat, int nombrePostes, String exigences) {
@@ -156,6 +165,14 @@ public class Concours implements Serializable {
 
     public void setProfils(List<Profils> profils) {
         this.profils = profils;
+    }
+
+    public Date getDatePassage() {
+        return datePassage;
+    }
+
+    public void setDatePassage(Date datePassage) {
+        this.datePassage = datePassage;
     }
 
     @Override

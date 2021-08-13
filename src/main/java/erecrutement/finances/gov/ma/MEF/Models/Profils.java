@@ -21,17 +21,20 @@ public class Profils implements Serializable {
     private String type;
     private String intitled;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToMany()
     @JsonIgnore
-    @JoinColumn(name = "idConcours")
-    private Concours concours;
-
-
-
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name = "GradesDesProfils",
+    @JoinTable(name = "ProfilsConcours",
     joinColumns = @JoinColumn(name = "idProfil"),
-    inverseJoinColumns = @JoinColumn(name = "id_Grade"))
+    inverseJoinColumns = @JoinColumn(name = "idConcours"))
+    private List<Concours> concours = new ArrayList<>();
+
+
+
+    @ManyToMany(mappedBy = "profils")
+    @JsonIgnore
+    /*@JoinTable(name = "GradesDesProfils",
+    joinColumns = @JoinColumn(name = "idProfil"),
+    inverseJoinColumns = @JoinColumn(name = "id_Grade"))*/
     private List<Grades> grades = new ArrayList<>();
 
     public Profils(String type, String intitled) {
@@ -67,12 +70,11 @@ public class Profils implements Serializable {
         this.intitled = intitled;
     }
 
-    //@JsonBackReference
-    public Concours getConcours() {
+    public List<Concours> getConcours() {
         return concours;
     }
 
-    public void setConcours(Concours concours) {
+    public void setConcours(List<Concours> concours) {
         this.concours = concours;
     }
 

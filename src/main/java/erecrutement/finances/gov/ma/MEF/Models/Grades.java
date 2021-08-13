@@ -20,11 +20,11 @@ public class Grades implements Serializable {
 
     private String intitledGrade;
 
-    @JsonIgnore
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name = "GradesDesProfils",
             joinColumns = @JoinColumn(name = "id_Grade"),
-            inverseJoinColumns = @JoinColumn(name = "idProfil"))
+            inverseJoinColumns = @JoinColumn(name = "idProfil"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"id_Grade","idProfil"} ))
     private List<Profils> profils = new ArrayList<>();
 
     public Grades(String intitledGrade) {
