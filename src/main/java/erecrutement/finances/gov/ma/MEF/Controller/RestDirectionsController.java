@@ -1,5 +1,6 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
+import erecrutement.finances.gov.ma.MEF.DAO.DirectionsDAO;
 import erecrutement.finances.gov.ma.MEF.Models.Directions;
 import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import erecrutement.finances.gov.ma.MEF.Services.DirectionService;
@@ -16,9 +17,16 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class RestDirectionsController implements IController<Directions>{
+public class RestDirectionsController implements IController<Directions>,DirExtension{
 
     private InterfaceService<Directions> dirs;
+
+    private DirectionsDAO di;
+
+    @Autowired
+    public void setDi(DirectionsDAO di) {
+        this.di = di;
+    }
 
     @Autowired
     public void setDirs(DirectionService dirs) {
@@ -64,4 +72,9 @@ public class RestDirectionsController implements IController<Directions>{
         return dirs.chercher("%"+mc+"%",page,size);
     }
 
+    @Override
+    @GetMapping(path = "SearchOneDirection/{mc}")
+    public Directions Search(@PathVariable("mc") String mc) {
+        return di.OneDir(mc);
+    }
 }

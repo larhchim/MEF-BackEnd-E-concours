@@ -3,10 +3,13 @@ package erecrutement.finances.gov.ma.MEF.Models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -17,10 +20,12 @@ public class Gestionnaires implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GestionnaireId")
     private int idGestionnaire;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String motDePasse;
     private Boolean etatcCompte;
     private Boolean isAdministrator;
     private int habilitation;
+    @Column(unique = true)
     private String login;
 
     @ManyToMany()
@@ -31,6 +36,9 @@ public class Gestionnaires implements Serializable {
 
     @OneToMany(mappedBy = "gestionnaire")
     private List<HistoriqueGestionnaire> historyGest = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<AppRole> roles = new ArrayList<>();
 
 
     public Gestionnaires(String motDePasse, Boolean etatcCompte, Boolean isAdministrator, int habilitation, String login) {
@@ -108,6 +116,14 @@ public class Gestionnaires implements Serializable {
 
     public void setHistoryGest(List<HistoriqueGestionnaire> historyGest) {
         this.historyGest = historyGest;
+    }
+
+    public Collection<AppRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<AppRole> roles) {
+        this.roles = roles;
     }
 
     @Override

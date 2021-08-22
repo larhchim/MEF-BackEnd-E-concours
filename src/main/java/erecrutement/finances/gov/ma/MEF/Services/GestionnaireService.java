@@ -8,6 +8,7 @@ import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,12 @@ public class GestionnaireService implements IGestionnaireService{
 
     private IEmailSending email;
 
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Autowired
     public void setGt(GestionnaireDAO gt) {
@@ -47,6 +54,7 @@ public class GestionnaireService implements IGestionnaireService{
         this.email = email;
     }
 
+
     ResponseBean resp = new ResponseBean();
 
     @Override
@@ -60,8 +68,13 @@ public class GestionnaireService implements IGestionnaireService{
         //dr.add(dir.getById(1));
         g.setDirections(dr);*/
 
-        String mot = EmailSendingImlp.alphaNumericString(10);
-        String pass = md5.getMd5(mot);
+        /*String mot = EmailSendingImlp.alphaNumericString(10);
+        String pass = md5.getMd5(mot);*/
+
+        //String mot = EmailSendingImlp.alphaNumericString(10);
+        String mot = "1234";
+        String pass = bCryptPasswordEncoder.encode(mot);
+
 
         g.setMotDePasse(pass);
 

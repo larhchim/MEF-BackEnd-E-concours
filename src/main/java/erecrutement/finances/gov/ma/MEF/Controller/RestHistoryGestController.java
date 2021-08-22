@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/HistoryG")
 public class RestHistoryGestController implements IController<HistoriqueGestionnaire>,IHistoryCustom{
 
     private InterfaceService<HistoriqueGestionnaire> histGest;

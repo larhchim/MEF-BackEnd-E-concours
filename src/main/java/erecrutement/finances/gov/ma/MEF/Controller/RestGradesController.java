@@ -26,8 +26,9 @@ public class RestGradesController implements IController<Grades>,IGradeExtension
     }
 
     @Override
+    @GetMapping(path="ALLGrades",produces= {"application/json"})
     public List<Grades> ListeObjects() {
-        return null;
+        return grade.TousLesGrades();
     }
 
     @Override

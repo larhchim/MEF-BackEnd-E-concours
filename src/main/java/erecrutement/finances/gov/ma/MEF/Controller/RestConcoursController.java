@@ -1,22 +1,20 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
-import erecrutement.finances.gov.ma.MEF.Models.Concours;
-import erecrutement.finances.gov.ma.MEF.Models.Directions;
-import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
-import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
+import erecrutement.finances.gov.ma.MEF.Models.*;
 import erecrutement.finances.gov.ma.MEF.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 @org.springframework.web.bind.annotation.RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -100,6 +98,29 @@ public class RestConcoursController {
 
 
 
+    @GetMapping(path = "SearchBy/{intitledprof}",produces= {"application/json"})
+    public Page<Concours> Filter2(@RequestParam(name = "intitledprof",defaultValue = "") String intitledprof, @RequestParam(name = "page",defaultValue = "0")int page,@RequestParam(name = "size",defaultValue = "5")int size){
+        return cncs.Filter2("%"+intitledprof+"%",page,size);
+    }
+
+    @GetMapping(path = "SearchBYProf/{Profile}")
+    public List<Recherche> fil(@PathVariable("Profile") String pro){
+        Collection<Concours> col = new ArrayList<>();
+        List<Recherche> colRes = new ArrayList<>();
+
+        col = cncs.TousLesConcours();
+        for (Concours c: col) {
+            if(c.getEtat() == true) {
+                for (Profils p : c.getProfils()) {
+                    if (p.getIntitled().equalsIgnoreCase(pro)) {
+                        colRes.add(new Recherche(c.getIdConcours(),c.getDateLimiteConcours(), c.getDatePassage(), c.getIntitled(), c.getNombrePostes(), c.getExigences()));
+                        break;
+                    }
+                }
+            }
+        }
+        return colRes;
+    }
 
 
 
@@ -112,9 +133,13 @@ public class RestConcoursController {
 
 
 
-}
 
-@EnableWebSecurity
+
+
+
+    }
+
+/*@EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -127,4 +152,10 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        super.configure(auth);
+    }
 }
+*/

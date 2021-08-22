@@ -1,9 +1,6 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,7 +28,7 @@ public class Profils implements Serializable {
 
 
     @ManyToMany(mappedBy = "profils")
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     /*@JoinTable(name = "GradesDesProfils",
     joinColumns = @JoinColumn(name = "idProfil"),
     inverseJoinColumns = @JoinColumn(name = "id_Grade"))*/

@@ -17,4 +17,5 @@ public interface GestionnaireDAO extends JpaRepository<Gestionnaires,Integer> {
     @Query("select c from Gestionnaires c where c.login like :x")
     public Page<Gestionnaires> search(@Param("x") String mc, Pageable pageable);
 
+    public Gestionnaires findByLogin(String login);
 }

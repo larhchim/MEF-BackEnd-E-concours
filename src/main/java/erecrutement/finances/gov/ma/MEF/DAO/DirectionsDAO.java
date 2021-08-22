@@ -15,4 +15,7 @@ public interface DirectionsDAO extends JpaRepository<Directions,Integer> {
     @Query("select c from Directions c where c.nom like :x or c.intitled like :x")
     public Page<Directions> search(@Param("x") String mc, Pageable pageable);
 
+    @Query("select c from Directions  c where  c.nom like :x")
+    public Directions OneDir(@Param("x") String mc);
+
 }

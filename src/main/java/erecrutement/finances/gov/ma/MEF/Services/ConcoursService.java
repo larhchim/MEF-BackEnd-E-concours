@@ -11,9 +11,11 @@ import erecrutement.finances.gov.ma.MEF.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -185,5 +187,20 @@ System.out.println("lwla daz***");
     @Override
     public Page<Concours> chercher(String mc, int page, int size) {
         return cnc.search(mc, PageRequest.of(page,size));
+    }
+
+    @Override
+    public Page<Concours> Filter(String intitledcnc, String intitleddir,int page,int size) {
+        return cnc.Filter(intitledcnc,intitleddir,PageRequest.of(page, size));
+    }
+
+    @Override
+    public Page<Concours> Filter2(String intitledprof, int page, int size) {
+        return cnc.Filter2(intitledprof,PageRequest.of(page,size));
+    }
+
+    @Override
+    public Concours UnConcours(int id) {
+        return cnc.getById(id);
     }
 }

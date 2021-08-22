@@ -1,9 +1,6 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -40,8 +37,8 @@ public class Inscriptions implements Serializable {
     private String motDePasse;
 
     @ManyToOne(cascade=CascadeType.ALL)
-    @JsonIgnore
     @JoinColumn(name = "idConcours")
+    @JsonIgnore
     private Concours concours;
 
     @OneToMany(mappedBy = "inscription")
@@ -202,7 +199,7 @@ public class Inscriptions implements Serializable {
     }
 
    // @JsonBackReference
-    public Concours getConcours() {
+   public Concours getConcours() {
         return concours;
     }
 
