@@ -2,6 +2,7 @@ package erecrutement.finances.gov.ma.MEF.Services;
 
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -60,6 +61,31 @@ public class EmailSendingImlp implements IEmailSending{
         } catch (Exception e) {
             return "Mail sent failed";
         }
+    }
+
+    @Override
+    public Boolean Pin(String loging, String password) throws MessagingException {
+        // SimpleMailMessage mailMessage = new SimpleMailMessage();
+        MimeMessage mailMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mailMessage);
+
+        String mailSubject ="Confirmation Creation Compte Gestionnaires/Administrateur E-Concours";
+        String mailContent = "<h2 style=\"text-transform: uppercase;\"><span style= \"color:#F39C12;\">M</span>inistère de l'économie et des finances  MEF</h2>\n";
+        mailContent += "<p style= \"font-weight: 400; color: #111;font-size: 21px;font-family:Trebuchet MS, sans-serif;\">pour que vous puissiez s'authentifier vers votre espace Gestionnaire/Administrateur chez Ministère de l'économie et des finances  MEF  veuillez saisir le login suivant en tant que votre username </p>"
+                +"<h1 style=\"color:#F39C12; text-align: center; font-weight: 600; font-size: 22px;\">"+loging+"</h1>"
+                +"<p style= \"font-weight: 400; color: #111;font-size: 21px;font-family:Trebuchet MS, sans-serif;\">Ainsi que veuillez saisir ce mot de passe en tant que votre password temporelle pour acceder a votre compte Gestionnaire/Administrateur de la MEF vous pouvez le changer ultérieurement </p>"
+                +"<h1 style=\"color:#F39C12; text-align: center; font-weight: 600; font-size: 22px;\">"+password+"</h1>";
+
+        mailContent+="<span style= \"font-weight: 300; color: #111;font-size: 19px;font-family:Trebuchet MS, sans-serif;\">si vous avez un problème vous pouvez contacter le support dans le lien suivant <a href='mailto:ismaillarhchim864@gmail.com'> MEFRA dans votre Service</a>"
+                + "</span>";
+        helper.setTo(loging);
+        helper.setFrom("ilarhchim88@gmail.com");
+
+        helper.setSubject(mailSubject);
+        helper.setText(mailContent,true);
+
+        javaMailSender.send(mailMessage);
+        return true;
     }
 
 

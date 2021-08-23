@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,6 +27,7 @@ public class Gestionnaires implements Serializable {
     private Boolean isAdministrator;
     private int habilitation;
     @Column(unique = true)
+    @NotNull(message = "Log in must be valid")
     private String login;
 
     @ManyToMany()

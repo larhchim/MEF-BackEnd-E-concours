@@ -1,8 +1,9 @@
 package erecrutement.finances.gov.ma.MEF.Services;
 
+import erecrutement.finances.gov.ma.MEF.DAO.AppRoleRepository;
 import erecrutement.finances.gov.ma.MEF.DAO.DirectionsDAO;
 import erecrutement.finances.gov.ma.MEF.DAO.GestionnaireDAO;
-import erecrutement.finances.gov.ma.MEF.Models.Directions;
+import erecrutement.finances.gov.ma.MEF.Models.AppRole;
 import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
 import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,11 +26,23 @@ public class GestionnaireService implements IGestionnaireService{
 
     private DirectionsDAO dir;
 
-    private IMd5Hash md5;
-
     private IEmailSending email;
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private IAccountService iAccountService;
+
+    private AppRoleRepository appRoleRepository;
+
+    @Autowired
+    public void setAppRoleRepository(AppRoleRepository appRoleRepository) {
+        this.appRoleRepository = appRoleRepository;
+    }
+
+    @Autowired
+    public void setiAccountService(IAccountService iAccountService) {
+        this.iAccountService = iAccountService;
+    }
 
     @Autowired
     public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -45,11 +60,6 @@ public class GestionnaireService implements IGestionnaireService{
     }
 
     @Autowired
-    public void setMd5(IMd5Hash md5) {
-        this.md5 = md5;
-    }
-
-    @Autowired
     public void setEmail(IEmailSending email) {
         this.email = email;
     }
@@ -64,48 +74,127 @@ public class GestionnaireService implements IGestionnaireService{
 
     @Override
     public Optional<Gestionnaires> addGestionnaire(Gestionnaires g) {
-        /*List<Directions> dr = g.getDirections();
-        //dr.add(dir.getById(1));
-        g.setDirections(dr);*/
 
-        /*String mot = EmailSendingImlp.alphaNumericString(10);
-        String pass = md5.getMd5(mot);*/
 
-        //String mot = EmailSendingImlp.alphaNumericString(10);
-        String mot = "1234";
+        String mot = EmailSendingImlp.alphaNumericString(10);
         String pass = bCryptPasswordEncoder.encode(mot);
-
 
         g.setMotDePasse(pass);
 
-        /*
-        Sending true pass through email adress g.getEmail
-         */
 
-
-        email.sendEmail(g.getLogin(),"<b>E-concours platform Authentification Credentials</b>",
+        /*email.sendEmail(g.getLogin(),"<b>E-concours platform Authentification Credentials</b>",
                 "" +"<b>These are your credentials for authentification</b> <br>"+
                         "<b><font color=red>Login: </font>"+g.getLogin()+"</b><br>" +
-                        "<b><font color=red>Password: </font>"+mot+"</b>");
-
-        /*email.sendEmailwithAttachment(g.getLogin(),"<b>E-concours platform Authentification Credentials</b>","<b><font color=red>Login: </font>"+g.getLogin()+"</b><br>" +
-                "<b><font color=red>Password: </font>"+mot+"</b>","");*/
+                        "<b><font color=red>Password: </font>"+mot+"</b>");*/
+        try {
+            email.Pin(g.getLogin(),mot);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            return null;
+        }
 
         g.setMotDePasse(pass);
         gt.save(g);
+
+        /*@
+         Administrateur ADMIN
+         */
+        if (g.getAdministrator() == true){
+
+            iAccountService.AddRoleToGestionnaire(g.getLogin(),"ADMIN");
+            /*
+            @Acces globale GESTLV1 et Acces locale GESTLV2
+             */
+        }else if (g.getHabilitation() == 2 && g.getHabilitation() ==1){
+
+            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV1");
+            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV2");
+
+             /*
+            @Acces Globale GESTLV1
+             */
+
+        }else if (g.getHabilitation() == 2){
+
+            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV1");
+
+             /*
+            @Acces locale GESTLV2
+             */
+        }else if (g.getHabilitation() == 1){
+
+            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV2");
+
+            /*
+            sans Acces == DENIED
+             */
+        }else{
+            iAccountService.AddRoleToGestionnaire(g.getLogin(),"DENIED");
+
+        }
+
         int id = g.getIdGestionnaire();
         return gt.findById(id);
     }
 
     @Override
     public Gestionnaires ModifyGestionnaire(Gestionnaires g,int id) {
-        /*List<Directions> dr = g.getDirections();
-        dr.add(dir.getById(1));
 
-        System.out.println(dr);*/
 
         g.setIdGestionnaire(id);
-        //g.setDirections(dr);
+
+        if (g.getAdministrator() == true){
+
+            AppRole appRole = appRoleRepository.findByRoleName("ADMIN");
+            List<AppRole> roles = new ArrayList<>();
+            roles.add(appRole);
+            g.setRoles(roles);
+            /*
+            @Acces globale GESTLV1 et Acces locale GESTLV2
+             */
+        }else if (g.getHabilitation() == 2 && g.getHabilitation() ==1){
+
+            List<AppRole> roles = new ArrayList<>();
+            AppRole appRole1 = appRoleRepository.findByRoleName("GESTLV1");
+            AppRole appRole2 = appRoleRepository.findByRoleName("GESTLV2");
+            roles.add(appRole1);
+            roles.add(appRole2);
+            g.setRoles(roles);
+             /*
+            @Acces Globale GESTLV1
+             */
+
+        }else if (g.getHabilitation() == 2){
+
+            List<AppRole> roles = new ArrayList<>();
+            AppRole appRole = appRoleRepository.findByRoleName("GESTLV1");
+            roles.add(appRole);
+            g.setRoles(roles);
+
+             /*
+            @Acces locale GESTLV2
+             */
+        }else if (g.getHabilitation() == 1){
+
+            List<AppRole> roles = new ArrayList<>();
+            AppRole appRole = appRoleRepository.findByRoleName("GESTLV2");
+            roles.add(appRole);
+            g.setRoles(roles);
+
+            /*
+            sans Acces == DENIED
+             */
+        }else{
+
+            List<AppRole> roles = new ArrayList<>();
+            AppRole appRole = appRoleRepository.findByRoleName("DENIED");
+            roles.add(appRole);
+            g.setRoles(roles);
+
+        }
+
+        Gestionnaires iogest = gt.getById(id);
+        g.setMotDePasse(iogest.getMotDePasse());
 
         gt.save(g);
 
