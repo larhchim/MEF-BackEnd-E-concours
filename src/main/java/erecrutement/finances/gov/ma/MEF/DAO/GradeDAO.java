@@ -13,4 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface GradeDAO extends JpaRepository<Grades,Integer> {
     @Query("select c from Grades c where c.intitledGrade like :x")
     public Page<Grades> search(@Param("x") String mc, Pageable pageable);
+
+    @Query("select c from Grades c where c.intitledGrade like :x")
+    public Grades lookfor(@Param("x") String intit);
 }

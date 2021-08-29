@@ -1,0 +1,11 @@
+{
+"http://localhost:8083/ConcoursStatsDirection/1"
+"GET MAPPING"
+}
+
+{
+    "Actifs": 12,
+    "Concours de la direction": 12,
+    "Términé": 0,
+    "Tous Les Concours": 24
+}

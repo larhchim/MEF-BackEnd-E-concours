@@ -1,0 +1,62 @@
+{
+"http://localhost:8083/SearchDirections?mc=&size=&page="
+"Get Mapping"
+"Serach Directions"
+}
+
+{
+    "content": [
+        {
+            "id": 1,
+            "fonction": "publique",
+            "description": "financiere",
+            "intitled": "Direction des impots",
+            "logo": "https://www.facebook.com",
+            "nom": "financiere",
+            "agentsDeSupports": []
+        },
+        {
+            "id": 5,
+            "fonction": "sdqqsd",
+            "description": "ersd",
+            "intitled": "qsdqsd",
+            "logo": "qsdqsd",
+            "nom": "qsdqsd",
+            "agentsDeSupports": []
+        },
+        {
+            "id": 6,
+            "fonction": "privée",
+            "description": "financiere",
+            "intitled": "Direction des achats",
+            "logo": "https://www.facebook.com",
+            "nom": "achats",
+            "agentsDeSupports": []
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 5,
+        "unpaged": false,
+        "paged": true
+    },
+    "totalPages": 1,
+    "totalElements": 3,
+    "last": true,
+    "size": 5,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "first": true,
+    "numberOfElements": 3,
+    "empty": false
+}

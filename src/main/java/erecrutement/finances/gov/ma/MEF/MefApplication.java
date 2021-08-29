@@ -1,6 +1,7 @@
 package erecrutement.finances.gov.ma.MEF;
 
 import erecrutement.finances.gov.ma.MEF.DAO.AppRoleRepository;
+import erecrutement.finances.gov.ma.MEF.DAO.DirectionsDAO;
 import erecrutement.finances.gov.ma.MEF.DAO.GestionnaireDAO;
 import erecrutement.finances.gov.ma.MEF.Models.AppRole;
 import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
@@ -14,6 +15,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -21,13 +23,13 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 import java.util.stream.Stream;
 
 @SpringBootApplication
 public class MefApplication  {
+
+	int i=0;
 
 	IGradesService grade;
 
@@ -35,13 +37,20 @@ public class MefApplication  {
 
 	private GestionnaireDAO gg ;
 
+	private DirectionsDAO dd;
+
 	private AppRoleRepository appRoleRepository;
+
+	@Autowired
+	public void setDd(DirectionsDAO dd) {
+		this.dd = dd;
+	}
 
 	@Autowired
 	public void setAppRoleRepository(AppRoleRepository appRoleRepository) {
 		this.appRoleRepository = appRoleRepository;
 	}
-
+/*
 	@Autowired
 	public void setGg(GestionnaireDAO gg) {
 		this.gg = gg;
@@ -50,7 +59,7 @@ public class MefApplication  {
 	@Autowired
 	public void setiGestionnaireService(IGestionnaireService iGestionnaireService) {
 		this.iGestionnaireService = iGestionnaireService;
-	}
+	}*/
 
 	@Autowired
 	public void setGrade(IGradesService grade) {
@@ -81,6 +90,26 @@ public class MefApplication  {
 		corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
 
+	/*	System.out.println("Nombre total Stats1===============>"+gg.Stats1());
+		System.out.println("Admins Stats2===============>"+gg.Stats2());
+		System.out.println("GEST LVL1 Stats3===============>"+gg.Stats3());
+		System.out.println("GEST LVL2 Stats4===============>"+gg.Stats4());
+		System.out.println("direction1============>"+gg.stats5(dd.getOne(1)));
+		System.out.println("direction2============>"+gg.stats5(dd.getOne(2)));
+		System.out.println("direction3============>"+gg.stats5(dd.getOne(3)));
+		System.out.println("direction4============>"+gg.stats5(dd.getOne(4)));
+		System.out.println("direction5============>"+gg.stats5(dd.getOne(5)));
+		System.out.println("direction6============>"+gg.stats5(dd.getOne(6)));
+		System.out.println("direction7============>"+gg.stats5(dd.getOne(7)));
+		System.out.println("direction8============>"+gg.stats5(dd.getOne(8)));
+		System.out.println("direction9============>"+gg.stats5(dd.getOne(9)));
+		System.out.println("direction10============>"+gg.stats5(dd.getOne(10)));
+		System.out.println("direction11============>"+gg.stats5(dd.getOne(11)));
+		System.out.println("direction12============>"+gg.stats5(dd.getOne(12)));
+*/
+
+
+
 	}
 
 	/*@Bean
@@ -109,6 +138,24 @@ GROUP BY centres_concours.id_centre;
 	@Bean
 	BCryptPasswordEncoder getBCR(){
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	List<String> getAllowedFiles(){
+		List AllowedFiles= new ArrayList();
+		AllowedFiles.add(".pdf");
+		AllowedFiles.add(".png");
+		AllowedFiles.add(".jpeg");
+		AllowedFiles.add(".mp4");
+		AllowedFiles.add(".mp3");
+		AllowedFiles.add(".docx");
+		AllowedFiles.add(".doc");
+		AllowedFiles.add(".csv");
+		AllowedFiles.add(".xls");
+		AllowedFiles.add(".xlsx");
+		AllowedFiles.add(".ppt");
+		AllowedFiles.add(".pptx");
+		return AllowedFiles;
 	}
 
 	/*@Bean

@@ -1,0 +1,42 @@
+{
+"http://localhost:8083/SearchVilles?mc=&size=&page=0"
+"Get Method"
+"SearchVilles"
+}
+
+
+{
+    "content": [
+        {
+            "idVille": 1,
+            "latitudeVille": 23.0,
+            "longitudeVille": -99.0,
+            "nomVille": "Casablanca"
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "offset": 0,
+        "pageSize": 5,
+        "pageNumber": 0,
+        "unpaged": false,
+        "paged": true
+    },
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 1,
+    "size": 5,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "first": true,
+    "numberOfElements": 1,
+    "empty": false
+}

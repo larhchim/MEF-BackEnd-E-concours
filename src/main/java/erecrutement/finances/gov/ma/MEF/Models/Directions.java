@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.ArrayList;
@@ -20,14 +21,19 @@ public class Directions implements Serializable {
     @Column(name = "DirectionId")
     private int id;
 
+    @Pattern(regexp = "[A-Za-z0-9'À-ÿ ]+",message = "Entrez une chaine de caracteres valide")
     private String fonction;
     @Lob
     @Column(name="description", length=99999)
+    @Pattern(regexp = "[A-Za-z0-9'À-ÿ ]+", message = "Entrez une chaine de caracteres valide")
     private String description;
+    @Pattern(regexp = "[A-Za-z0-9'À-ÿ ]+", message = "Entrez une chaine de caracteres valide")
     private String intitled;
 
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "Entrez une chaine de caracteres valide")
     private String logo;
 
+    @Pattern(regexp = "[A-Za-zÀ-ÿ' ]+", message = "Entrez un Nom valide")
     private String nom;
 
     @OneToMany(mappedBy = "direction",cascade=CascadeType.ALL)

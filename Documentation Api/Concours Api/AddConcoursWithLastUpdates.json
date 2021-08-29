@@ -1,0 +1,78 @@
+{
+"POST METHOD"
+"http://localhost:8083/addConcours"
+"Add New Concours with latest Updates specifying fields on top of that specifying also center and profiles"
+}
+
+
+{
+  "dateConcours": "2021-11-09",
+    "dateLimiteConcours": "2022-03-09",
+    "intitled": "Concours du Ministére de l'economie et de la reforme de l'administration ",
+    "etat": true,
+    "nombrePostes": 222,
+    "exigences": "https://www.finances.gov.men.ma",
+    "direction": {
+        "id": 1
+    },
+    "centres": [
+        {
+            "idCentre": 2
+        }
+    ],
+    "profils": [
+        {
+            "idProfil": 1
+        },
+        {
+            "idProfil": 2
+        }
+    ]
+}
+
+{
+"The response is as following"
+}
+
+{
+    "idConcours": 2,
+    "dateConcours": "2021-11-09T00:00:00.000+00:00",
+    "dateLimiteConcours": "2022-03-09T00:00:00.000+00:00",
+    "intitled": "Concours du Ministére de l'economie et de la reforme de l'administration ",
+    "etat": true,
+    "nombrePostes": 222,
+    "exigences": "https://www.finances.gov.men.ma",
+    "direction": {
+        "id": 1,
+        "fonction": null,
+        "description": null,
+        "intitled": null,
+        "logo": null,
+        "nom": null,
+        "agentsDeSupports": []
+    },
+    "inscriptions": [],
+    "resultats": null,
+    "centres": [
+        {
+            "idCentre": 2,
+            "longitude": 0.0,
+            "latitude": 0.0,
+            "adresse": null,
+            "salle": null,
+            "ville": null
+        }
+    ],
+    "profils": [
+        {
+            "idProfil": 1,
+            "type": null,
+            "intitled": null
+        },
+        {
+            "idProfil": 2,
+            "type": null,
+            "intitled": null
+        }
+    ]
+}

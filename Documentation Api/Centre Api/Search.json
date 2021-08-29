@@ -1,0 +1,74 @@
+{
+"http://localhost:8083/SearchCentres?mc=&size=&page=0"
+"Get Method"
+"SearchCentres"
+}
+
+{
+    "content": [
+        {
+            "idCentre": 1,
+            "longitude": 45.0,
+            "latitude": -45.0,
+            "adresse": "znata 78",
+            "salle": "salle 120",
+            "ville": {
+                "idVille": 1,
+                "latitudeVille": 23.0,
+                "longitudeVille": -99.0,
+                "nomVille": "Casablanca"
+            }
+        },
+        {
+            "idCentre": 2,
+            "longitude": 2.0,
+            "latitude": -56.0,
+            "adresse": "qscscsw",
+            "salle": "gvdfvdsd",
+            "ville": {
+                "idVille": 1,
+                "latitudeVille": 23.0,
+                "longitudeVille": -99.0,
+                "nomVille": "Casablanca"
+            }
+        },
+        {
+            "idCentre": 3,
+            "longitude": 89.0,
+            "latitude": -89.0,
+            "adresse": "Rabat 416",
+            "salle": "salle 228",
+            "ville": {
+                "idVille": 1,
+                "latitudeVille": 23.0,
+                "longitudeVille": -99.0,
+                "nomVille": "Casablanca"
+            }
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "offset": 0,
+        "pageSize": 5,
+        "pageNumber": 0,
+        "unpaged": false,
+        "paged": true
+    },
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 3,
+    "size": 5,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "first": true,
+    "numberOfElements": 3,
+    "empty": false
+}

@@ -1,0 +1,9 @@
+{
+"http://localhost:8083/CentreStats/5"
+"GET MAPPING"
+}
+
+{
+    "Centres du concours": 4,
+    "Tous les Centres": 13
+}

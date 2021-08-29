@@ -3,6 +3,8 @@ package erecrutement.finances.gov.ma.MEF.Models;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,17 +18,79 @@ public class Inscriptions implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idInscription;
 
+    @Pattern(regexp = "[A-Za-z0-9À-ÿ ]+", message = "*Entrez un Nom Valide*")
+    @NotNull(message = "*Veuillez saisir votre nom complet*")
+    @NotBlank(message = "*Le nom est un champ obligatoire*")
     private String nomComplet;
+
+
+
+    @Pattern(regexp = "[A-Za-z0-9À-ÿ.' ]+", message = "*Entrez une adresse Valide*")
+    @NotBlank(message = "*Adresse est un champ obligatoire*")
     private String adresse;
+
+
+
+    @Pattern(regexp = "[A-Za-z0-9 ]+", message = "*Entrez Numero CIN Valide ex: AD258754*")
+    @NotNull(message = "*Veuillez saisir votre CIN*")
+    @NotBlank(message = "*CIN est un champ obligatoire*")
     private String cin;
+
+
+
+    @Pattern(regexp = "[+0-9]+", message = "*Entrez un numero de telephone Valide ex: +21264015900*")
+    @NotNull(message = "*Veuillez saisir votre telephone*")
+    @NotBlank(message = "*Telephone est un champ obligatoire*")
     private String telephone;
+
+
+
+    @Pattern(regexp = "[0-9]+", message = "*Entrez un code postal Valide ex:120200*")
+    @NotNull(message = "*Veuillez saisir votre code postal*")
+    @NotBlank(message = "*Code Postal est un champ obligatoire*")
     private String codePostal;
+
+
+
+    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" , message = "Entrez un email valide")
+    @NotNull(message = "*Veuillez saisir votre adresse email*")
+    @NotBlank(message = "*Adresse Email est un champ obligatoire*")
     private String adresseEmail;
+
+
+
+    @Pattern(regexp = "[A-Za-z0-9'.À-ÿ ]+", message = "*Entrez une ville Valide*")
+    @NotNull(message = "*Veuillez specifier votre ville d'origine*")
+    @NotBlank(message = "*Ville est un champ obligatoire*")
     private String ville;
+
+
+
+    @Pattern(regexp = "[A-Za-z0-9.'À-ÿ ]+", message = "*Entrez une specialité Valide*")
+    @NotNull(message = "*Veuillez saisir votre specialité*")
+    @NotBlank(message = "*Specialité est un champ obligatoire*")
     private String specialite;
-    private int anneeObtentionDiplome;
+
+
+
+    @NotNull(message = "*Le champ Annee obtention diplome est obligatoire*")
+    private Integer anneeObtentionDiplome;
+
+
+
+    @Pattern(regexp = "[A-Za-z0-9À-ÿ'. ]+", message = "*Entrez un diplome Valide*")
+    @NotNull(message = "*Veuillez saisir le diplome obtenue*")
+    @NotBlank(message = "*Diplome Obtenue est un champ obligatoire*")
     private String diplomeObtenue;
+
+
+    @Pattern(regexp = "[A-Za-z0-9À-ÿ.' ]+", message = "*Entrez un etablissement Valide*")
+    @NotNull(message = "*Le champ etablissement est obligatoire*")
+    @NotBlank(message = "*Etablissement est un champ obligatoire*")
     private String etablissement;
+
+
+
     private Boolean status;
 
     @Temporal(TemporalType.DATE)
@@ -34,7 +98,15 @@ public class Inscriptions implements Serializable {
 
 
     private Boolean etatCandidature;
+
+
+    @NotNull(message = "*Le champ Mot de passe est obligatoire*")
+    @NotBlank(message = "*Mot de Passe est un champ obligatoire*")
     private String motDePasse;
+
+    @NotNull(message = "*Le champ Mot de passe est obligatoire*")
+    @NotBlank(message = "*Mot de Passe est un champ obligatoire*")
+    private String remotDePasse;
 
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "idConcours")
@@ -45,10 +117,11 @@ public class Inscriptions implements Serializable {
     private List<HistoriqueChangementStatus> historiquestatusChange = new ArrayList<>();
 
     @OneToMany(mappedBy = "inscription")
+
     private List<FichiersJoints> fichiers = new ArrayList<>();
 
 
-    public Inscriptions(String nomComplet, String adresse, String cin, String telephone, String codePostal, String adresseEmail, String ville, String specialite, int anneeObtentionDiplome, String diplomeObtenue, String etablissement, Boolean status, Date dateCandidature, Boolean etatCandidature, String motDePasse) {
+    public Inscriptions(String nomComplet, String adresse, String cin, String telephone, String codePostal, String adresseEmail, String ville, String specialite, Integer anneeObtentionDiplome, String diplomeObtenue, String etablissement, Boolean status, Date dateCandidature, Boolean etatCandidature, String motDePasse,String remotDePasse) {
         this.nomComplet = nomComplet;
         this.adresse = adresse;
         this.cin = cin;
@@ -64,6 +137,7 @@ public class Inscriptions implements Serializable {
         this.dateCandidature = dateCandidature;
         this.etatCandidature = etatCandidature;
         this.motDePasse = motDePasse;
+        this.remotDePasse = remotDePasse;
     }
 
     public Inscriptions(){
@@ -142,11 +216,11 @@ public class Inscriptions implements Serializable {
         this.specialite = specialite;
     }
 
-    public int getAnneeObtentionDiplome() {
+    public Integer getAnneeObtentionDiplome() {
         return anneeObtentionDiplome;
     }
 
-    public void setAnneeObtentionDiplome(int anneeObtentionDiplome) {
+    public void setAnneeObtentionDiplome(Integer anneeObtentionDiplome) {
         this.anneeObtentionDiplome = anneeObtentionDiplome;
     }
 
@@ -198,7 +272,15 @@ public class Inscriptions implements Serializable {
         this.motDePasse = motDePasse;
     }
 
-   // @JsonBackReference
+    public String getRemotDePasse() {
+        return remotDePasse;
+    }
+
+    public void setRemotDePasse(String remotDePasse) {
+        this.remotDePasse = remotDePasse;
+    }
+
+    // @JsonBackReference
    public Concours getConcours() {
         return concours;
     }

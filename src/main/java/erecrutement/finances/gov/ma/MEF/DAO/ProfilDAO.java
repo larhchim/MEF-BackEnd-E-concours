@@ -12,4 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface ProfilDAO extends JpaRepository<Profils,Integer> {
     @Query("select c from Profils c where c.intitled like :x or c.type like :x")
     public Page<Profils> chercher(@Param("x") String mc,  Pageable pageable);
+
+    @Query("select c from Profils c where c.intitled like :x and c.type like :y")
+    public Profils lookforProfil(@Param("x") String intit,@Param("y") String type);
 }

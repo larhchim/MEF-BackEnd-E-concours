@@ -16,3 +16,14 @@
         "nomVille": "casa"
     }
 }
+
+{
+    "idCentre": 1,
+    "adresse": "znata",
+}
+
+SELECT Count(centres_concours.id_concours) AS 'nombre Concours', centres_concours.id_centre,centres.adresse,centres.salle,ville.nom_ville
+FROM centres_concours,centres,ville
+WHERE centres_concours.id_centre = centres.id_centre
+AND centres.id_ville = ville.id_ville
+GROUP BY centres_concours.id_centre;

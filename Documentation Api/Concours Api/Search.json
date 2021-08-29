@@ -1,0 +1,282 @@
+{
+"http://localhost:8083/SearchConcours?mc=&size=&page=0"
+"GeT Method"
+"SearchConcours"
+}
+
+{
+    "content": [
+        {
+            "idConcours": 12,
+            "dateConcours": "2028-07-21",
+            "dateLimiteConcours": "2029-07-31",
+            "intitled": "****xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx******",
+            "etat": true,
+            "nombrePostes": 2115,
+            "exigences": "https://www.*xxxxxxxxxxxxxxxxx**.co   m",
+            "direction": {
+                "id": 1,
+                "fonction": "publique",
+                "description": "financiere",
+                "intitled": "Direction des impots",
+                "logo": "https://www.facebook.com",
+                "nom": "financiere",
+                "agentsDeSupports": []
+            },
+            "inscriptions": [],
+            "resultats": null,
+            "centres": [],
+            "profils": [
+                {
+                    "idProfil": 13,
+                    "type": "xxxxxxxxxxxxxx",
+                    "intitled": "xxxxxxxxxxxxx*",
+                    "grades": []
+                },
+                {
+                    "idProfil": 14,
+                    "type": "Technic8xxxxxxxxxxs",
+                    "intitled": "xxxxxxxxxxxxx sp8eci7alisé",
+                    "grades": []
+                }
+            ]
+        },
+        {
+            "idConcours": 24,
+            "dateConcours": "2028-07-21",
+            "dateLimiteConcours": "2029-07-31",
+            "intitled": "****77777******",
+            "etat": true,
+            "nombrePostes": 2115,
+            "exigences": "https://www.*88777**.co   m",
+            "direction": {
+                "id": 1,
+                "fonction": "publique",
+                "description": "financiere",
+                "intitled": "Direction des impots",
+                "logo": "https://www.facebook.com",
+                "nom": "financiere",
+                "agentsDeSupports": []
+            },
+            "inscriptions": [],
+            "resultats": null,
+            "centres": [],
+            "profils": [
+                {
+                    "idProfil": 31,
+                    "type": "g877788",
+                    "intitled": "Inggenieurs d'777**88*",
+                    "grades": [
+                        {
+                            "id": 56,
+                            "intitledGrade": "*87778** grade"
+                        },
+                        {
+                            "id": 57,
+                            "intitledGrade": "27emge gr88778***ade"
+                        }
+                    ]
+                },
+                {
+                    "idProfil": 32,
+                    "type": "Technic888*77*iens",
+                    "intitled": "Technicie7ns sp8eci7alisé",
+                    "grades": [
+                        {
+                            "id": 58,
+                            "intitledGrade": "1er7e g7r*78*ade"
+                        },
+                        {
+                            "id": 59,
+                            "intitledGrade": "2*7eme gr**78ade"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "idConcours": 25,
+            "dateConcours": "2028-07-21",
+            "dateLimiteConcours": "2029-07-31",
+            "intitled": "****77777******",
+            "etat": true,
+            "nombrePostes": 2115,
+            "exigences": "https://www.*88777**.co   m",
+            "direction": {
+                "id": 1,
+                "fonction": "publique",
+                "description": "financiere",
+                "intitled": "Direction des impots",
+                "logo": "https://www.facebook.com",
+                "nom": "financiere",
+                "agentsDeSupports": []
+            },
+            "inscriptions": [],
+            "resultats": null,
+            "centres": [],
+            "profils": [
+                {
+                    "idProfil": 33,
+                    "type": "g877788",
+                    "intitled": "Inggenieurs d'777**88*",
+                    "grades": [
+                        {
+                            "id": 60,
+                            "intitledGrade": "*87778** grade"
+                        },
+                        {
+                            "id": 61,
+                            "intitledGrade": "27emge gr88778***ade"
+                        }
+                    ]
+                },
+                {
+                    "idProfil": 34,
+                    "type": "Technic888*77*iens",
+                    "intitled": "Technicie7ns sp8eci7alisé",
+                    "grades": [
+                        {
+                            "id": 62,
+                            "intitledGrade": "1er7e g7r*78*ade"
+                        },
+                        {
+                            "id": 63,
+                            "intitledGrade": "2*7eme gr**78ade"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "idConcours": 26,
+            "dateConcours": "2028-07-21",
+            "dateLimiteConcours": "2029-07-31",
+            "intitled": "****77777******",
+            "etat": true,
+            "nombrePostes": 2115,
+            "exigences": "https://www.*88777**.co   m",
+            "direction": {
+                "id": 1,
+                "fonction": "publique",
+                "description": "financiere",
+                "intitled": "Direction des impots",
+                "logo": "https://www.facebook.com",
+                "nom": "financiere",
+                "agentsDeSupports": []
+            },
+            "inscriptions": [],
+            "resultats": null,
+            "centres": [],
+            "profils": [
+                {
+                    "idProfil": 35,
+                    "type": "g877788",
+                    "intitled": "Inggenieurs d'777**88*",
+                    "grades": [
+                        {
+                            "id": 64,
+                            "intitledGrade": "*87778** grade"
+                        },
+                        {
+                            "id": 65,
+                            "intitledGrade": "27emge gr88778***ade"
+                        }
+                    ]
+                },
+                {
+                    "idProfil": 36,
+                    "type": "Technic888*77*iens",
+                    "intitled": "Technicie7ns sp8eci7alisé",
+                    "grades": [
+                        {
+                            "id": 66,
+                            "intitledGrade": "1er7e g7r*78*ade"
+                        },
+                        {
+                            "id": 67,
+                            "intitledGrade": "2*7eme gr**78ade"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "idConcours": 27,
+            "dateConcours": "2028-07-21",
+            "dateLimiteConcours": "2029-07-31",
+            "intitled": "****77777******",
+            "etat": true,
+            "nombrePostes": 2115,
+            "exigences": "https://www.*88777**.co   m",
+            "direction": {
+                "id": 1,
+                "fonction": "publique",
+                "description": "financiere",
+                "intitled": "Direction des impots",
+                "logo": "https://www.facebook.com",
+                "nom": "financiere",
+                "agentsDeSupports": []
+            },
+            "inscriptions": [],
+            "resultats": null,
+            "centres": [],
+            "profils": [
+                {
+                    "idProfil": 37,
+                    "type": "g877788",
+                    "intitled": "Inggenieurs d'777**88*",
+                    "grades": [
+                        {
+                            "id": 68,
+                            "intitledGrade": "*87778** grade"
+                        },
+                        {
+                            "id": 69,
+                            "intitledGrade": "27emge gr88778***ade"
+                        }
+                    ]
+                },
+                {
+                    "idProfil": 38,
+                    "type": "Technic888*77*iens",
+                    "intitled": "Technicie7ns sp8eci7alisé",
+                    "grades": [
+                        {
+                            "id": 70,
+                            "intitledGrade": "1er7e g7r*78*ade"
+                        },
+                        {
+                            "id": 71,
+                            "intitledGrade": "2*7eme gr**78ade"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "offset": 0,
+        "pageSize": 5,
+        "pageNumber": 0,
+        "unpaged": false,
+        "paged": true
+    },
+    "last": false,
+    "totalPages": 2,
+    "totalElements": 9,
+    "size": 5,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "first": true,
+    "numberOfElements": 5,
+    "empty": false
+}

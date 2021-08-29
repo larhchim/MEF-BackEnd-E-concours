@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 
@@ -16,8 +17,10 @@ public class FichiersJoints implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFichier;
 
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "Entrez une chaine de caracteres valide")
     private String nomFichier;
 
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "Entrez une chaine de caracteres valide")
     private String fichier;
 
     @ManyToOne(cascade=CascadeType.ALL)

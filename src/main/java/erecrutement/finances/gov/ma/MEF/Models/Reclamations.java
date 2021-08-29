@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -18,6 +19,7 @@ public class Reclamations implements Serializable {
     private int numeroCandidat;
     private int numeroConcours;
     private int numeroGestionnaire;
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "Entrez une dizaine de chaines de caractéres Valide")
     private String intitled;
 
     @ManyToOne(cascade=CascadeType.ALL)

@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,6 +64,16 @@ public class RestVilleController implements IController<Ville>{
             @RequestParam(name = "size",defaultValue = "5") int size
     ) {
         return ville.chercher("%"+mc+"%",page,size);
+    }
+
+    @Override
+    public ResponseEntity<Object> AddObjectExtension(@Valid Ville ville, BindingResult bindingResult) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Object> UpdateObjectExtension(@Valid Ville ville, BindingResult bindingResult, int id) {
+        return null;
     }
 
 

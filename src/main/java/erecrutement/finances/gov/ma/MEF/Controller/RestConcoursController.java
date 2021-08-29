@@ -7,18 +7,23 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @org.springframework.web.bind.annotation.RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class RestConcoursController {
+    int i = 0;
 
     private IConcoursService cncs;
 
@@ -59,9 +64,22 @@ public class RestConcoursController {
 
 
     @PostMapping(path = "addConcours",consumes = {"application/json;charset=UTF-8"} ,produces = {"application/json;charset=UTF-8"})
-    public Concours AjouterConcours(@RequestBody Concours r) {
+    public ResponseEntity<Object> AjouterConcours(@Valid @RequestBody Concours r, BindingResult bindingResult) {
 
-        return cncs.addConcours(r);
+        //return cncs.addConcours(r);
+
+        Map<String,String> errors = new HashMap<>();
+        if (bindingResult.hasErrors()){
+            for (FieldError fd:bindingResult.getFieldErrors()) {
+                errors.put(fd.getField(), fd.getDefaultMessage());
+            }
+
+            return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+
+
+        return new ResponseEntity<>(cncs.addConcours(r),HttpStatus.OK);
 
     }
 
@@ -80,9 +98,18 @@ public class RestConcoursController {
     }
 
     @PutMapping(path="updateConc/{aid}",consumes = {"application/json;charset=UTF-8"} ,produces = {"application/json;charset=UTF-8"})
-    public ResponseEntity<Concours> ModifyConcours(@RequestBody Concours cnc, @PathVariable int aid){
+    public ResponseEntity<Object> ModifyConcours(@Valid @RequestBody  Concours cnc, BindingResult bindingResult,@PathVariable int aid){
 
-        return new ResponseEntity<Concours>(cncs.ModifyConcours(cnc,aid), HttpStatus.OK);
+        Map<String,String> errors = new HashMap<>();
+        if (bindingResult.hasErrors()){
+            for (FieldError fd:bindingResult.getFieldErrors()) {
+                errors.put(fd.getField(), fd.getDefaultMessage());
+            }
+
+            return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        return new ResponseEntity<>(cncs.ModifyConcours(cnc,aid), HttpStatus.OK);
 
     }
 
@@ -124,38 +151,5 @@ public class RestConcoursController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-/*@EnableWebSecurity
-@Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/users/**").permitAll();
-        http.csrf().disable();
-
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        super.configure(auth);
-    }
 }
-*/
+

@@ -1,0 +1,44 @@
+{
+"http://localhost:8083/AddInscription"
+"POST METHOD"
+}
+
+{
+    "idInscription": 1,
+    "nomComplet": "LARHCHIM ISMAIL",
+    "adresse": "HAY MASSIRA 01 NR 416 TEMARA",
+    "cin": "AD25464",
+    "telephone": "06584231564165",
+    "codePostal": "23561321",
+    "adresseEmail": "idhsjqsd@gmail.com",
+    "ville": "Casablanca",
+    "specialite": "informatique",
+    "anneeObtentionDiplome": 2016,
+    "diplomeObtenue": "Ing d'etat",
+    "etablissement": "FSTS",
+    "status": null,
+    "dateCandidature": "2021-08-16T09:00:23.942+00:00",
+    "etatCandidature": null,
+    "motDePasse": null,
+    "historiquestatusChange": [],
+    "fichiers": []
+}
+
+{
+    "nomComplet": "",
+    "adresse": "",
+    "cin": "",
+    "telephone": "",
+    "codePostal": "",
+    "adresseEmail": "",
+    "ville": "",
+    "specialite": "",
+    "anneeObtentionDiplome": null,
+    "diplomeObtenue": "",
+    "etablissement": "",
+    "status": null,
+    "dateCandidature": null,
+    "motDePasse": null,
+    "historiquestatusChange": [],
+    "fichiers": []
+}

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class Ville implements Serializable {
 
     private double latitudeVille;
     private double longitudeVille;
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "Ce n'est pas une ville valide ex: Casablanca Rabat Temara ..." )
     private String nomVille;
 
     @OneToMany(mappedBy = "ville")

@@ -5,6 +5,7 @@ import erecrutement.finances.gov.ma.MEF.Models.Concours;
 import erecrutement.finances.gov.ma.MEF.Models.FichiersJoints;
 import erecrutement.finances.gov.ma.MEF.Models.Inscriptions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,11 +19,16 @@ public class CandidatureServiceImpl implements ICandidatureService{
 
     private InscriptionsDAO insc;
 
-    private IMd5Hash md5Encoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private IConcoursService concoursService;
 
     private IFichiersJointsService files;
+
+    @Autowired
+    public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Autowired
     public void setFiles(IFichiersJointsService files) {
@@ -39,16 +45,13 @@ public class CandidatureServiceImpl implements ICandidatureService{
         this.insc = insc;
     }
 
-    @Autowired
-    public void setMd5Encoder(IMd5Hash md5Encoder) {
-        this.md5Encoder = md5Encoder;
-    }
+
 
     @Override
     public Inscriptions AddInscription(Inscriptions inscriptions, int id) {
         inscriptions.setDateCandidature(new Date());
         inscriptions.setEtatCandidature(false);
-        inscriptions.setMotDePasse(md5Encoder.getMd5(inscriptions.getMotDePasse()));
+        inscriptions.setMotDePasse(bCryptPasswordEncoder.encode(inscriptions.getMotDePasse()));
         inscriptions.setAdresse(inscriptions.getAdresse());
         inscriptions.setConcours(concoursService.UnConcours(id));
         inscriptions.setFichiers(inscriptions.getFichiers());

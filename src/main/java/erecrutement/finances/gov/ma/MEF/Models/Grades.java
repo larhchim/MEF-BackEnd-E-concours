@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Grades implements Serializable {
     @Column(name = "id_Grade")
     private int id;
 
+    @Pattern(regexp = "[A-Za-z0-9'À-ÿ ]+", message = "Entrez une chaine de caracteres valide")
     private String intitledGrade;
 
     @ManyToMany()

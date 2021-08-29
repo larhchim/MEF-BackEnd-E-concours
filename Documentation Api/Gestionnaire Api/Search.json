@@ -1,0 +1,54 @@
+{
+"http://localhost:8083/SearchGestionnaires?mc=ppp@hotmail&size=&page="
+"Get Method"
+"SearchGestionnaires"
+}
+
+{
+    "content": [
+        {
+            "idGestionnaire": 19,
+            "motDePasse": "ppppp",
+            "etatcCompte": true,
+            "habilitation": 0,
+            "login": "ppp@hotmail.com",
+            "directions": [],
+            "historyGest": [
+                {
+                    "idHistorique": 5,
+                    "type": "test ++",
+                    "intitled": "test ++",
+                    "description": "test ++",
+                    "dateAction": "2021-07-30",
+                    "tache": "test ++"
+                }
+            ],
+            "administrator": true
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 5,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": true,
+    "totalElements": 1,
+    "totalPages": 1,
+    "size": 5,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "first": true,
+    "numberOfElements": 1,
+    "empty": false
+}

@@ -1,5 +1,6 @@
 package erecrutement.finances.gov.ma.MEF.Services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -26,9 +27,35 @@ public class UploadDownloadService implements IUploadDownload{
 
     public static final String DIRECTORY = "src/main/resources/static/FilesUploaded";
 
+    private List<String> allowedfiles;
+    int test = 0;
+
+
+    @Autowired
+    public void setAllowedfiles(List<String> allowedfiles) {
+        this.allowedfiles = allowedfiles;
+    }
+
     @Override
     public ResponseEntity<List<String>> UploadFiles(List<MultipartFile> multipartFiles) throws Exception{
         List<String> filenames = new ArrayList<>();
+        test =0;
+        for(MultipartFile f :multipartFiles){
+            String filename =  StringUtils.cleanPath(f.getOriginalFilename());
+            System.out.println(filename);
+
+            allowedfiles.forEach(r->{
+                System.out.println(r);
+                if(filename.toLowerCase().contains(r)){
+                    test = 1;
+                }
+            });
+            if (test == 0){
+                List error = new ArrayList();
+                error.add("This file format is not supportable please provide the extension required or we will suspend your ip adress");
+                return new ResponseEntity<List<String>>(error,HttpStatus.NOT_ACCEPTABLE);
+            }
+        }
         for (MultipartFile file :multipartFiles) {
             String filename = StringUtils.cleanPath(file.getOriginalFilename());
             Path fileStorage = get(DIRECTORY,filename).toAbsolutePath().normalize();

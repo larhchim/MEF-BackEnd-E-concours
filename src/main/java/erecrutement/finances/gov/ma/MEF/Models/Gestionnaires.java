@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,11 +23,22 @@ public class Gestionnaires implements Serializable {
     private int idGestionnaire;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String motDePasse;
+
+    @NotNull(message = "*Le champ etat compte est obligatoire*")
+    @Column(nullable = false)
     private Boolean etatcCompte;
+
+    @NotNull(message = "*Le champ Admin est obligatoire*")
+    @Column(nullable = false)
     private Boolean isAdministrator;
+
+
+    @Min(value = 1,message ="*Le champ habilitation est obligatoire*" )
+    @Max(value = 2,message ="*Le champ habilitation est obligatoire*" )
     private int habilitation;
-    @Column(unique = true)
-    @NotNull(message = "Log in must be valid")
+    @Column(unique = true,nullable = false)
+    @NotBlank(message = "Entrez un email valide et coherent vous l'avez oublié")
+    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" , message = "Entrez un email valide")
     private String login;
 
     @ManyToMany()

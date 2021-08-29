@@ -3,6 +3,9 @@ package erecrutement.finances.gov.ma.MEF.Models;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,11 +27,13 @@ public class Concours implements Serializable {
 
     private Date dateLimiteConcours;
 
+    @Pattern(regexp = "[-'0-9a-zÀ-ÿA-Z% ]*",message = "Le titre contient seulement des chaines de caracteres valides et quelques numeros si c'est obligatoire")
     private String intitled;
+    @NotNull(message = "Veuillez Choisir l'etat du Concours")
     private Boolean etat;
     private int nombrePostes;
 
-
+    @Pattern(regexp = "([-A-Z_a-z0-9'. %://])*",message = "Exigence contienne seulement des chaines de caracteres valides et quelques numeros si c'est obligatoire de format: Nom.yyyy.mm.dd")
     private String exigences;
 
     @ManyToOne()

@@ -1,0 +1,10 @@
+{
+"http://localhost:8083/ConcoursOfProfileStats/1"
+"GET MAPPING"
+}
+
+{
+    "Concours Actifs": 24,
+    "Actifs du Profil": 18,
+    "Términé du Profil": 0
+}

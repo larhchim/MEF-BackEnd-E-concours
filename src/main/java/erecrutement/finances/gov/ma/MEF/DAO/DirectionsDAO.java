@@ -18,4 +18,6 @@ public interface DirectionsDAO extends JpaRepository<Directions,Integer> {
     @Query("select c from Directions  c where  c.nom like :x")
     public Directions OneDir(@Param("x") String mc);
 
+
+
 }

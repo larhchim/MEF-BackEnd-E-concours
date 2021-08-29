@@ -30,7 +30,7 @@ public class GestionnaireService implements IGestionnaireService{
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private IAccountService iAccountService;
+    private IAccountService AccountService;
 
     private AppRoleRepository appRoleRepository;
 
@@ -40,8 +40,8 @@ public class GestionnaireService implements IGestionnaireService{
     }
 
     @Autowired
-    public void setiAccountService(IAccountService iAccountService) {
-        this.iAccountService = iAccountService;
+    public void setAccountService(IAccountService iAccountService) {
+        this.AccountService = iAccountService;
     }
 
     @Autowired
@@ -101,14 +101,14 @@ public class GestionnaireService implements IGestionnaireService{
          */
         if (g.getAdministrator() == true){
 
-            iAccountService.AddRoleToGestionnaire(g.getLogin(),"ADMIN");
+            AccountService.AddRoleToGestionnaire(g.getLogin(),"ADMIN");
             /*
             @Acces globale GESTLV1 et Acces locale GESTLV2
              */
         }else if (g.getHabilitation() == 2 && g.getHabilitation() ==1){
 
-            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV1");
-            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV2");
+            AccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV1");
+            AccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV2");
 
              /*
             @Acces Globale GESTLV1
@@ -116,20 +116,20 @@ public class GestionnaireService implements IGestionnaireService{
 
         }else if (g.getHabilitation() == 2){
 
-            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV1");
+            AccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV1");
 
              /*
             @Acces locale GESTLV2
              */
         }else if (g.getHabilitation() == 1){
 
-            iAccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV2");
+            AccountService.AddRoleToGestionnaire(g.getLogin(),"GESTLV2");
 
             /*
             sans Acces == DENIED
              */
         }else{
-            iAccountService.AddRoleToGestionnaire(g.getLogin(),"DENIED");
+            AccountService.AddRoleToGestionnaire(g.getLogin(),"DENIED");
 
         }
 

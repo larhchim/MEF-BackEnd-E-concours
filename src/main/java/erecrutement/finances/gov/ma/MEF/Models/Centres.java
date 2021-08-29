@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,11 @@ public class Centres implements Serializable {
 
     private double longitude;
     private double latitude;
+    @NotBlank(message = "Vous devez specifier L'adresse du centre")
+    @Pattern(regexp = "([A-Za-z0-9À-ÿ ])*",message = "L'adresse contient seulement la localisation du centre et ou le numero")
     private String adresse;
+    @NotBlank(message = "Veuillez saisir la salle du centre")
+    @Pattern(regexp = "([A-Za-z0-9À-ÿ ])*",message = "La salle doit contenir seulement des numeros et chaines de caracteres")
     private String salle;
 
     @JsonIgnore

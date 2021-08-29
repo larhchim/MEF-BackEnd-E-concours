@@ -1,0 +1,13 @@
+{
+"http://localhost:8083/GestDirectionStats/1"
+"GET MAPPING"
+}
+
+
+{
+    "GestionnairesLV1": 1,
+    "GestionnairesLV2": 0,
+    "Desactivated": 1,
+    "Admins": 4,
+    "Gestionnaires": 5
+}

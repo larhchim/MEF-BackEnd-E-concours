@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 import java.util.Date;
@@ -22,10 +23,13 @@ public class Resultats implements Serializable {
 
     private int nombrePostes;
 
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "URL invalide renommez le fichier ex:nom.annee.moi.jour_concours_specialité" )
     private String candidatsConvoques;
 
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "URL invalide renommez le fichier ex:nom.annee.moi.jour_concours_specialité" )
     private String resultatsEcrit;
 
+    @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "URL invalide renommez le fichier ex:nom.annee.moi.jour_concours_specialité" )
     private String resultatsDefenitifs;
 
     @OneToOne(targetEntity = Concours.class,cascade=CascadeType.ALL)

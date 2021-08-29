@@ -1,0 +1,10 @@
+{
+"http://localhost:8083/InscriptionsStats"
+"GET MAPPING"
+}
+
+{
+    "Inscription Refusé": 9,
+    "Les Inscriptions": 9,
+    "Inscription Accepté": 0
+}

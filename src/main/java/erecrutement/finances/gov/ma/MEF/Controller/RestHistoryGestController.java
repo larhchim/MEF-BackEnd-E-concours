@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,6 +68,16 @@ public class RestHistoryGestController implements IController<HistoriqueGestionn
 
     @Override
     public Page<HistoriqueGestionnaire> chercher(String mc, int page, int size) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Object> AddObjectExtension(@Valid HistoriqueGestionnaire historiqueGestionnaire, BindingResult bindingResult) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Object> UpdateObjectExtension(@Valid HistoriqueGestionnaire historiqueGestionnaire, BindingResult bindingResult,int id) {
         return null;
     }
 

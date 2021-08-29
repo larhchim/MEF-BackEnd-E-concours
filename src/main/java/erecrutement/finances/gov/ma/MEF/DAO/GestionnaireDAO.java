@@ -1,5 +1,6 @@
 package erecrutement.finances.gov.ma.MEF.DAO;
 
+import erecrutement.finances.gov.ma.MEF.Models.AppRole;
 import erecrutement.finances.gov.ma.MEF.Models.Directions;
 import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
 import org.springframework.data.domain.Page;
@@ -18,4 +19,37 @@ public interface GestionnaireDAO extends JpaRepository<Gestionnaires,Integer> {
     public Page<Gestionnaires> search(@Param("x") String mc, Pageable pageable);
 
     public Gestionnaires findByLogin(String login);
+
+    @Query("Select count(d) from Gestionnaires d where d.etatcCompte=false ")
+    public Integer stats0();
+
+    @Query("select count(c) from Gestionnaires c")
+    public Integer Stats1();
+
+    @Query("select count(c) from Gestionnaires c where c.isAdministrator = true ")
+    public Integer Stats2();
+
+    @Query("select count(c) from Gestionnaires c where c.isAdministrator =false AND c.habilitation=1")
+    public Integer Stats3();
+
+    @Query("select count (c) from Gestionnaires c where c.isAdministrator = false  AND  c.habilitation =2")
+    public Integer Stats4();
+
+    @Query("Select count(d) from Gestionnaires d left join d.directions i where i = :item ")
+    public Integer stats5(@Param("item") Directions directions );
+
+    @Query("Select count(d) from Gestionnaires d left join d.directions i where i = :item AND d.isAdministrator =true ")
+    public Integer stats6(@Param("item") Directions directions );
+
+    @Query("Select count(d) from Gestionnaires d left join d.directions i where i = :item AND d.isAdministrator =false And d.habilitation=1")
+    public Integer stats7(@Param("item") Directions directions );
+
+    @Query("Select count(d) from Gestionnaires d left join d.directions i where i = :item AND d.isAdministrator =false And d.habilitation=2")
+    public Integer stats8(@Param("item") Directions directions );
+
+   @Query("Select count(d) from Gestionnaires d left join d.directions i where i = :item and d.etatcCompte=false ")
+   public Integer stats9(@Param("item") Directions directions);
+
+
+
 }
