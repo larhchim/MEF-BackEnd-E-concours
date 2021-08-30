@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-        http.authorizeRequests().antMatchers("/ListDirs","/SearchOneDirection/**","/SearchDirections","/SearchConcours","/ListVilles","/listCentres","/SearchCentres","/SearchGrade","/SearchProfils","/ALLGrades","/GestGlobalStats","/GestDirectionStats/**","/ConcoursStatsDirection/**","/ConcoursOfProfileStats/**","/InscriptionsStats","/InscriptionsStatsConcours/**","/CentreStats/**")
+        http.authorizeRequests().antMatchers("/ListDirs","/SearchOneDirection/**","/SearchDirections","/SearchConcours","/ListVilles","/listCentres","/SearchCentres","/SearchGrade","/SearchProfils","/ALLGrades","/GestGlobalStats","/GestDirectionStats/**","/ConcoursStatsDirection/**","/ConcoursOfProfileStats/**","/InscriptionsStats","/InscriptionsStatsConcours/**","/CentreStats/**","/listcnc","/SearchInscriptions/**","/AddHistoryCandidate/**","/SearchHistoryCandidate/**","/UpdateInscription/**")
                 .access("hasAuthority('ADMIN') or hasAuthority('GESTLV1') or hasAuthority('GESTLV2')");
 
 
@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http.authorizeRequests().antMatchers("/ListGests","/deleteGest/**",
-                "/AddDirs","Directions/**","/listcnc","/cncs/**","/deleteConc/**",
+                "/AddDirs","Directions/**","/cncs/**","/deleteConc/**",
                 "/updateConc/**","/addVille","/ville/**","/UpdateVille/**","/SearchVilles"
                 ,"/Centre/**","/UpdateCentre/**","/file/delete/**","/HistoryG/**").hasAuthority("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();

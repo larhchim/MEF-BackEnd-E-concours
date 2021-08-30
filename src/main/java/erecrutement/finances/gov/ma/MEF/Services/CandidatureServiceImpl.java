@@ -50,8 +50,8 @@ public class CandidatureServiceImpl implements ICandidatureService{
     @Override
     public Inscriptions AddInscription(Inscriptions inscriptions, int id) {
         inscriptions.setDateCandidature(new Date());
-        inscriptions.setEtatCandidature(false);
         inscriptions.setMotDePasse(bCryptPasswordEncoder.encode(inscriptions.getMotDePasse()));
+        inscriptions.setRemotDePasse(bCryptPasswordEncoder.encode(inscriptions.getRemotDePasse()));
         inscriptions.setAdresse(inscriptions.getAdresse());
         inscriptions.setConcours(concoursService.UnConcours(id));
         inscriptions.setFichiers(inscriptions.getFichiers());
