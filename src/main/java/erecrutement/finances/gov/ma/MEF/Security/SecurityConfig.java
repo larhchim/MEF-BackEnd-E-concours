@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-        http.authorizeRequests().antMatchers("/ListDirs","/SearchOneDirection/**","/SearchDirections","/SearchConcours","/ListVilles","/listCentres","/SearchCentres","/SearchGrade","/SearchProfils","/ALLGrades","/GestGlobalStats","/GestDirectionStats/**","/ConcoursStatsDirection/**","/ConcoursOfProfileStats/**","/InscriptionsStats","/InscriptionsStatsConcours/**","/CentreStats/**","/listcnc","/SearchInscriptions/**","/AddHistoryCandidate/**","/SearchHistoryCandidate/**","/UpdateInscription/**")
+        http.authorizeRequests().antMatchers("/ListDirs","/SearchOneDirection/**","/SearchDirections","/SearchConcours","/ListVilles","/listCentres","/SearchCentres","/SearchGrade","/SearchProfils","/ALLGrades","/GestGlobalStats","/GestDirectionStats/**","/ConcoursStatsDirection/**","/ConcoursOfProfileStats/**","/InscriptionsStats","/InscriptionsStatsConcours/**","/CentreStats/**","/listcnc","/SearchInscriptions/**","/AddHistoryCandidate/**","/SearchHistoryCandidate/**","/UpdateInscription/**","/HistoryChangeStatusOfCandidates","/HistoryChangeStatusOfCandidates/**")
                 .access("hasAuthority('ADMIN') or hasAuthority('GESTLV1') or hasAuthority('GESTLV2')");
 
 

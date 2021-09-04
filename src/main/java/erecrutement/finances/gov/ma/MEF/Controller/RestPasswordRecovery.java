@@ -48,7 +48,12 @@ public class RestPasswordRecovery {
     public ResponseEntity<Object> Search(@PathVariable("login") String email) throws MessagingException {
         if (iAccountService.loadUserByLogin(email)==null){
             Map<String, String> map = new HashMap<>();
-            map.put("error", "Utilisateur n'existe pas ou/et le compte n'est plus fonctionnel contactez l'administrateur pour plus d'informations");
+            map.put("error", "Utilisateur n'existe pas si vous echouez 5 fois consécutifs la tentative suivante vous apporte un bloque de votre Adresse IP");
+            return new ResponseEntity<>(map, HttpStatus.CONFLICT);
+        }
+        else if(iAccountService.loadUserByLogin(email).getEtatcCompte()==false){
+            Map<String, String> map = new HashMap<>();
+            map.put("error", "Le compte n'est plus fonctionnel contactez l'administrateur pour plus d'informations");
             return new ResponseEntity<>(map, HttpStatus.CONFLICT);
         }
         else
@@ -64,7 +69,7 @@ public class RestPasswordRecovery {
     public ResponseEntity<Object> recovery(@RequestBody Recover recover,@PathVariable("code") String pin){
 
         Map<String,String> error = new HashMap<>();
-        if (iAccountService.loadUserByLogin(recover.getLogin())==null){
+        if (iAccountService.loadUserByLogin(recover.getLogin())==null || iAccountService.loadUserByLogin(recover.getLogin()).getEtatcCompte()==false){
             error.put("email","utilisateur n'existe pas");
             return new ResponseEntity<>(error,HttpStatus.NOT_ACCEPTABLE);
         }else if(iAccountService.loadUserByLogin(recover.getLogin()).getRoles().contains("DENIED")){
@@ -83,8 +88,14 @@ public class RestPasswordRecovery {
             return new ResponseEntity<>(error,HttpStatus.NOT_ACCEPTABLE);
         }else {
             Gestionnaires g = iAccountService.loadUserByLogin(recover.getLogin());
-            g.setMotDePasse(bCryptPasswordEncoder.encode(recover.getPassword()));
-            return new ResponseEntity<>(iGestionnaireService.ModifyGestionnaire(g,g.getIdGestionnaire()),HttpStatus.OK);
+            if(g.getEtatcCompte()!=null && g.getEtatcCompte()!=false){
+                g.setMotDePasse(bCryptPasswordEncoder.encode(recover.getPassword()));
+                return new ResponseEntity<>(iGestionnaireService.ModifyGestionnaire(g,g.getIdGestionnaire()),HttpStatus.OK);
+
+            }else {
+                error.put("email","Compte n'est plus fonctionnel essayez de contacter l'administrateur");
+                return new ResponseEntity<>(error,HttpStatus.NOT_ACCEPTABLE);
+            }
         }
     }
 }

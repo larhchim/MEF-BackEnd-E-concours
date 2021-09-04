@@ -29,9 +29,25 @@ public class HistoriqueChangementStatus implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Inscriptions inscription;
 
-    public HistoriqueChangementStatus(Date dateAction, String description) {
+
+    private Boolean refus;
+
+    private Boolean acceptation;
+
+    private Boolean instance;
+
+    private String examinateur;
+
+
+
+    public HistoriqueChangementStatus(Date dateAction, @Pattern(regexp = "[A-Za-z0-9.'-_%À-ÿ ]+", message = "Entrez une chaine de caracteres valide") String description, Inscriptions inscription, Boolean refus, Boolean acceptation, Boolean instance,String examinateur) {
         this.dateAction = dateAction;
         this.description = description;
+        this.inscription = inscription;
+        this.refus = refus;
+        this.acceptation = acceptation;
+        this.instance = instance;
+        this.examinateur =examinateur;
     }
 
     public HistoriqueChangementStatus(){
@@ -69,6 +85,38 @@ public class HistoriqueChangementStatus implements Serializable {
 
     public void setInscription(Inscriptions inscription) {
         this.inscription = inscription;
+    }
+
+    public Boolean getRefus() {
+        return refus;
+    }
+
+    public void setRefus(Boolean refus) {
+        this.refus = refus;
+    }
+
+    public Boolean getAcceptation() {
+        return acceptation;
+    }
+
+    public void setAcceptation(Boolean acceptation) {
+        this.acceptation = acceptation;
+    }
+
+    public Boolean getInstance() {
+        return instance;
+    }
+
+    public void setInstance(Boolean instance) {
+        this.instance = instance;
+    }
+
+    public String getExaminateur() {
+        return examinateur;
+    }
+
+    public void setExaminateur(String examinateur) {
+        this.examinateur = examinateur;
     }
 
     @Override

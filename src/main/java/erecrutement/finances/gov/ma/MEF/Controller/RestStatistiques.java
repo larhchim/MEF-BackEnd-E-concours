@@ -1,10 +1,9 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
 import erecrutement.finances.gov.ma.MEF.DAO.*;
-import erecrutement.finances.gov.ma.MEF.Models.AppRole;
-import erecrutement.finances.gov.ma.MEF.Models.Concours;
-import erecrutement.finances.gov.ma.MEF.Models.Directions;
-import erecrutement.finances.gov.ma.MEF.Models.Profils;
+import erecrutement.finances.gov.ma.MEF.Models.*;
+import erecrutement.finances.gov.ma.MEF.Services.GestionnaireService;
+import erecrutement.finances.gov.ma.MEF.Services.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +24,13 @@ public class RestStatistiques {
     private CentresDAO centresDAO;
     private DirectionsDAO directionsDAO;
     private ProfilDAO profilDAO;
+    private HistoryStatusCandidateDAO historyStatusCandidateDAO;
+
+
+    @Autowired
+    public void setHistoryStatusCandidateDAO(HistoryStatusCandidateDAO historyStatusCandidateDAO) {
+        this.historyStatusCandidateDAO = historyStatusCandidateDAO;
+    }
 
     @Autowired
     public void setProfilDAO(ProfilDAO profilDAO) {
@@ -156,6 +162,64 @@ public class RestStatistiques {
         return new ResponseEntity<>(map,HttpStatus.OK);
 
     }
+
+
+    @GetMapping(path = "InscriptionsStatsConcours/TrancheAge")
+    public ResponseEntity<Object> InscriptionsOfConcoursTrancheAge(){
+
+        Map<String,Integer> map = new HashMap<>();
+        map.put("TrancheUnder20", inscriptionsDAO.TrancheUnder20());
+        map.put("TrancheBetween20And30",inscriptionsDAO.TrancheBetween20And30());
+        map.put("TrancheBetween30And40",inscriptionsDAO.TrancheBetween30And40());
+        map.put("TrancheBetween40And50",inscriptionsDAO.TrancheBetween40And50());
+        map.put("TrancheBetween50And60",inscriptionsDAO.TrancheBetween50And60());
+        map.put("TrancheMoreThan60",inscriptionsDAO.TrancheMoreThan60());
+        return new ResponseEntity<>(map,HttpStatus.OK);
+
+    }
+
+
+    @GetMapping(path = "InscriptionsStatsConcours/TrancheAgeByConcours/{id}")
+    public ResponseEntity<Object> InscriptionsOfConcoursTrancheAge(@PathVariable("id") int id){
+
+        Map<String,Integer> map = new HashMap<>();
+        map.put("TrancheUnder20", inscriptionsDAO.TrancheUnder20ByConcours(id));
+        map.put("TrancheBetween20And30",inscriptionsDAO.TrancheBetween20And30ByConcours(id));
+        map.put("TrancheBetween30And40",inscriptionsDAO.TrancheBetween30And40ByConcours(id));
+        map.put("TrancheBetween40And50",inscriptionsDAO.TrancheBetween40And50ByConcours(id));
+        map.put("TrancheBetween50And60",inscriptionsDAO.TrancheBetween50And60ByConcours(id));
+        map.put("TrancheMoreThan60",inscriptionsDAO.TrancheMoreThan60ByConcours(id));
+        return new ResponseEntity<>(map,HttpStatus.OK);
+
+    }
+
+
+    @GetMapping(path = "HistoryChangeStatusOfCandidates")
+    public ResponseEntity<Object> HistoryChangeStatusOfCandidates(){
+
+        Map<String,Integer> map = new HashMap<>();
+        map.put("Acceptance", historyStatusCandidateDAO.Acceptance());
+        map.put("Refused", historyStatusCandidateDAO.Refused());
+        map.put("Instance", historyStatusCandidateDAO.Instance());
+        return new ResponseEntity<>(map,HttpStatus.OK);
+
+    }
+
+
+    @GetMapping(path = "HistoryChangeStatusOfCandidates/Username/{id}")
+    public ResponseEntity<Object> HistoryChangeStatusOfCandidates(@PathVariable("id") int id){
+
+        Map<String,Integer> map = new HashMap<>();
+        Gestionnaires gestionnaires = gestionnaireDAO.getById(id);
+        String login = gestionnaires.getLogin();
+        map.put("Acceptance", historyStatusCandidateDAO.AcceptanceByUsername(login));
+        map.put("Refused", historyStatusCandidateDAO.RefusedByUsername(login));
+        map.put("Instance", historyStatusCandidateDAO.InstanceByUsername(login));
+        return new ResponseEntity<>(map,HttpStatus.OK);
+
+    }
+
+
 
 
 }

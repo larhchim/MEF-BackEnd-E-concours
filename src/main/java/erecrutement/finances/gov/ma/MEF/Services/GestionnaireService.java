@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
+import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -128,7 +129,10 @@ public class GestionnaireService implements IGestionnaireService{
             /*
             sans Acces == DENIED
              */
-        }else{
+        }else if(g.getEtatcCompte()==false){
+            AccountService.AddRoleToGestionnaire(g.getLogin(),"DENIED");
+
+        }else {
             AccountService.AddRoleToGestionnaire(g.getLogin(),"DENIED");
 
         }
@@ -139,6 +143,7 @@ public class GestionnaireService implements IGestionnaireService{
 
     @Override
     public Gestionnaires ModifyGestionnaire(Gestionnaires g,int id) {
+
 
 
         g.setIdGestionnaire(id);

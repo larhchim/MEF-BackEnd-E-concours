@@ -77,6 +77,10 @@ public class Inscriptions implements Serializable {
     private Integer anneeObtentionDiplome;
 
 
+    @NotNull(message = "*Le champ Age Candidat est obligatoire*")
+    private Integer ageCandidat;
+
+
 
     @Pattern(regexp = "[A-Za-z0-9À-ÿ'. ]+", message = "*Entrez un diplome Valide*")
     @NotNull(message = "*Veuillez saisir le diplome obtenue*")
@@ -121,7 +125,7 @@ public class Inscriptions implements Serializable {
     private List<FichiersJoints> fichiers = new ArrayList<>();
 
 
-    public Inscriptions(String nomComplet, String adresse, String cin, String telephone, String codePostal, String adresseEmail, String ville, String specialite, Integer anneeObtentionDiplome, String diplomeObtenue, String etablissement, Boolean status, Date dateCandidature, Boolean etatCandidature, String motDePasse,String remotDePasse) {
+    public Inscriptions(String nomComplet, String adresse, String cin, String telephone, String codePostal, String adresseEmail, String ville, String specialite, Integer anneeObtentionDiplome, String diplomeObtenue, String etablissement, Boolean status, Date dateCandidature, Boolean etatCandidature, String motDePasse,String remotDePasse,int age) {
         this.nomComplet = nomComplet;
         this.adresse = adresse;
         this.cin = cin;
@@ -138,6 +142,7 @@ public class Inscriptions implements Serializable {
         this.etatCandidature = etatCandidature;
         this.motDePasse = motDePasse;
         this.remotDePasse = remotDePasse;
+        this.ageCandidat = age;
     }
 
     public Inscriptions(){
@@ -305,6 +310,15 @@ public class Inscriptions implements Serializable {
 
     public void setFichiers(List<FichiersJoints> fichiers) {
         this.fichiers = fichiers;
+    }
+
+
+    public Integer getAgeCandidat() {
+        return ageCandidat;
+    }
+
+    public void setAgeCandidat(Integer ageCandidat) {
+        this.ageCandidat = ageCandidat;
     }
 
     @Override

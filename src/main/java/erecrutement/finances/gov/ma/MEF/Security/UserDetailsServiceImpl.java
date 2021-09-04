@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
         Gestionnaires gestionnaires = iAccountService.loadUserByLogin(s);
-        if (gestionnaires == null) throw new UsernameNotFoundException("USER NOT FOUND INVALID USERNAME/LOGIN");
+        if (gestionnaires == null || gestionnaires.getEtatcCompte()==false) throw new UsernameNotFoundException("USER NOT FOUND INVALID USERNAME/LOGIN");
 
         System.out.println("le fameux ***********===>:"+gestionnaires);
         Collection<GrantedAuthority> authorities = new ArrayList<>();

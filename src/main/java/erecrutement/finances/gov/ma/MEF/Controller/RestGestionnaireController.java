@@ -1,9 +1,7 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
-import erecrutement.finances.gov.ma.MEF.Models.Centres;
-import erecrutement.finances.gov.ma.MEF.Models.Directions;
-import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
-import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
+import erecrutement.finances.gov.ma.MEF.DAO.AppRoleRepository;
+import erecrutement.finances.gov.ma.MEF.Models.*;
 import erecrutement.finances.gov.ma.MEF.Services.IAccountService;
 import erecrutement.finances.gov.ma.MEF.Services.IGestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,12 @@ public class RestGestionnaireController implements IController<Gestionnaires>{
 
     private IGestionnaireService gest;
     private IAccountService iAccountService;
+    private AppRoleRepository appRoleRepository;
+
+    @Autowired
+    public void setAppRoleRepository(AppRoleRepository appRoleRepository) {
+        this.appRoleRepository = appRoleRepository;
+    }
 
     @Autowired
     public void setiAccountService(IAccountService iAccountService) {
@@ -108,16 +112,27 @@ public class RestGestionnaireController implements IController<Gestionnaires>{
     @Override
     @PutMapping(path="UpdateGest/{id}",consumes = {"application/json;charset=UTF-8"} ,produces = {"application/json;charset=UTF-8"})
     public ResponseEntity<Object> UpdateObjectExtension(@Valid Gestionnaires gestionnaires, BindingResult bindingResult,@PathVariable("id") int id) {
-        Map<String,String> errors = new HashMap<>();
-        if (bindingResult.hasErrors()){
-            for (FieldError fd:bindingResult.getFieldErrors()) {
-                errors.put(fd.getField(), fd.getDefaultMessage());
+        AppRole approle = appRoleRepository.findByRoleName("ADMIN");
+        Gestionnaires gestionnaires1 = iAccountService.loadUserByLogin(gestionnaires.getLogin());
+
+        if(gestionnaires1.getRoles().contains(approle) || gestionnaires1.getAdministrator()==true){
+            Map<String,String> errors = new HashMap<>();
+            errors.put("error", "Cette utilisateur est un administrateur du systeme vous ne pouvez pas le modifier un protocole de modification speciale est adopté pour le profil Admin");
+            return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+
+        }else {
+            Map<String,String> errors = new HashMap<>();
+            if (bindingResult.hasErrors()){
+                for (FieldError fd:bindingResult.getFieldErrors()) {
+                    errors.put(fd.getField(), fd.getDefaultMessage());
+                }
+
+                return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
             }
 
-            return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(gest.ModifyGestionnaire(gestionnaires,id),HttpStatus.OK);
+        }
         }
 
-        return new ResponseEntity<>(gest.ModifyGestionnaire(gestionnaires,id),HttpStatus.OK);
-    }
 
 }
