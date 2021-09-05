@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class RestGestionnaireController implements IController<Gestionnaires>{
+public class RestGestionnaireController implements IController<Gestionnaires>,Examinateurs{
 
     private IGestionnaireService gest;
     private IAccountService iAccountService;
@@ -135,4 +135,9 @@ public class RestGestionnaireController implements IController<Gestionnaires>{
         }
 
 
+    @Override
+    @GetMapping(path="Examinators",produces= {"application/json"})
+    public List<erecrutement.finances.gov.ma.MEF.Models.Examinateurs> EXAMINATEURS_LIST() {
+        return gest.EXAMINATEURS_LIST();
+    }
 }

@@ -81,4 +81,7 @@ public interface InscriptionsDAO extends JpaRepository<Inscriptions,Integer> {
     @Query("select count(c) from Inscriptions c where c.ageCandidat >=60 and c.concours.idConcours=:s")
     public Integer TrancheMoreThan60ByConcours(@Param("s") int cnc);
 
+    @Query("select c from Inscriptions c where c.concours.idConcours=:a and c.etatCandidature=true")
+    public List<Inscriptions> ListeDesPreselectionnes(@Param("a") int idcnc);
+
 }

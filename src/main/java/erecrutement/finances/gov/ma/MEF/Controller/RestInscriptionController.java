@@ -1,7 +1,10 @@
 package erecrutement.finances.gov.ma.MEF.Controller;
 
+import erecrutement.finances.gov.ma.MEF.DAO.CentresDAO;
+import erecrutement.finances.gov.ma.MEF.DAO.ConcoursDAO;
 import erecrutement.finances.gov.ma.MEF.DAO.InscriptionsDAO;
 import erecrutement.finances.gov.ma.MEF.Models.Centres;
+import erecrutement.finances.gov.ma.MEF.Models.Concours;
 import erecrutement.finances.gov.ma.MEF.Models.Inscriptions;
 import erecrutement.finances.gov.ma.MEF.Services.ICandidatureService;
 import erecrutement.finances.gov.ma.MEF.Services.IMd5Hash;
@@ -28,6 +31,12 @@ public class RestInscriptionController {
 
     private ICandidatureService candidatureService;
     private InscriptionsDAO inscriptionsDAO;
+    private ConcoursDAO concoursDAO;
+
+    @Autowired
+    public void setConcoursDAO(ConcoursDAO concoursDAO) {
+        this.concoursDAO = concoursDAO;
+    }
 
     @Autowired
     public void setInscriptionsDAO(InscriptionsDAO inscriptionsDAO) {
@@ -44,6 +53,12 @@ public class RestInscriptionController {
     @PostMapping(path = "AddInscription/{id}",consumes = {"application/json;charset=UTF-8"} ,produces = {"application/json;charset=UTF-8"})
     public ResponseEntity<Object> AddInscription(@Valid @RequestBody Inscriptions inscriptions, BindingResult bindingResult, @PathVariable("id") int id){
         Map<String,String> errors = new HashMap<>();
+        Concours concours = concoursDAO.getById(id);
+        if (concours.getEtat()==false){
+            errors.put("Alerte","Vous n'avez plus le droit a postuler a ce concours la date limite est deja depassé");
+            return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+        }
+
         if (bindingResult.hasErrors()){
             for (FieldError fd:bindingResult.getFieldErrors()) {
                 errors.put(fd.getField(), fd.getDefaultMessage());

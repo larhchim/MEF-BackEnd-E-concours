@@ -1,6 +1,7 @@
 package erecrutement.finances.gov.ma.MEF.Models;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
+
 public class Concours implements Serializable {
 
     @Id

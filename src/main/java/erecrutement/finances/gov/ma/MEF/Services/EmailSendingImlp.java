@@ -1,13 +1,9 @@
 package erecrutement.finances.gov.ma.MEF.Services;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.pdf.PdfWriter;
 import erecrutement.finances.gov.ma.MEF.Models.PDF;
 import org.apache.commons.codec.CharEncoding;
-import org.springframework.core.io.InputStreamSource;
 import org.springframework.stereotype.Service;
 
-import javax.activation.DataSource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -166,6 +160,44 @@ public class EmailSendingImlp implements IEmailSending{
 
         javaMailSender.send(mailMessage);
         return pin;
+    }
+
+    @Override
+    public void EmailOfResults(List<String> emails, String fichier) throws MessagingException {
+
+        emails.forEach(r->{
+            System.out.println(r);
+            MimeMessage mailMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper;
+            try {
+                helper = new MimeMessageHelper(mailMessage,true, CharEncoding.UTF_8);
+
+                String mailSubject ="Message d'information de preselection dans le concours de la MERFA";
+                String mailContent = "<h2 style=\"text-transform: uppercase;\"><span style= \"color:#F39C12;\">M</span>inistère de l'économie et des finances  MEF</h2>\n";
+                mailContent += "<p style= \"font-weight: 400; color: #111;font-size: 21px;font-family:Trebuchet MS, sans-serif;\">vous informe que vous etes selectionée pour passer le concours ecrit qui aura lieu A Rabat ci joint le document de la preselection</p>";
+
+                helper.setTo(r);
+                helper.setFrom("ilarhchim88@gmail.com");
+
+                helper.setSubject(mailSubject);
+                helper.setText(mailContent,true);
+
+                File file = new File("src/main/resources/static/FilesUploaded/logo.jpg");
+
+                helper.addAttachment(file.getName(), file);
+
+                File file2 = new File("src/main/resources/static/FilesUploaded/"+fichier);
+
+                helper.addAttachment(file2.getName(), file2);
+
+                javaMailSender.send(mailMessage);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+
+
+        });
+
     }
 
 

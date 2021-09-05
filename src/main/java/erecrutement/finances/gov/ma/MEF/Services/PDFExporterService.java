@@ -154,7 +154,6 @@ public class PDFExporterService {
         cell = new PdfPCell(new Phrase(NomComplet,font2));
         cell.setColspan(1);
         cell.setBackgroundColor(Color.white);
-
         cell.setFixedHeight(70f);
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);

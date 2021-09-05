@@ -4,6 +4,7 @@ import erecrutement.finances.gov.ma.MEF.DAO.AppRoleRepository;
 import erecrutement.finances.gov.ma.MEF.DAO.DirectionsDAO;
 import erecrutement.finances.gov.ma.MEF.DAO.GestionnaireDAO;
 import erecrutement.finances.gov.ma.MEF.Models.AppRole;
+import erecrutement.finances.gov.ma.MEF.Models.Examinateurs;
 import erecrutement.finances.gov.ma.MEF.Models.Gestionnaires;
 import erecrutement.finances.gov.ma.MEF.Models.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
-import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -239,5 +239,16 @@ public class GestionnaireService implements IGestionnaireService{
     @Override
     public Page<Gestionnaires> chercher(String mc, int page, int size) {
         return gt.search(mc, PageRequest.of(page, size));
+    }
+
+    @Override
+    public List<Examinateurs> EXAMINATEURS_LIST() {
+        List<Gestionnaires> gestionnaires = gt.findAll();
+        List<Examinateurs> examinateurs = new ArrayList<>();
+        gestionnaires.forEach(r->{
+            Examinateurs examinateurs1 = new Examinateurs(r.getIdGestionnaire(),r.getLogin());
+            examinateurs.add(examinateurs1);
+        });
+        return examinateurs;
     }
 }
