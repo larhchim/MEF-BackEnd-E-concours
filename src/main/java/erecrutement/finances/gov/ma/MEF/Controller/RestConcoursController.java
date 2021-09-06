@@ -18,6 +18,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @org.springframework.web.bind.annotation.RestController
@@ -64,11 +67,22 @@ public class RestConcoursController {
 
 
     @PostMapping(path = "addConcours",consumes = {"application/json;charset=UTF-8"} ,produces = {"application/json;charset=UTF-8"})
-    public ResponseEntity<Object> AjouterConcours(@Valid @RequestBody Concours r, BindingResult bindingResult) {
-
-        //return cncs.addConcours(r);
-
+    public ResponseEntity<Object> AjouterConcours(@Valid @RequestBody Concours r, BindingResult bindingResult) throws ParseException {
         Map<String,String> errors = new HashMap<>();
+
+        if (r.getDateLimiteConcours().compareTo(r.getDateConcours())<0){
+            errors.put("dateLimiteConcours", "Date limite de Concours doit etre superieure a la date du concours");
+            errors.put("dateConcours", "Date limite de Concours doit etre superieure a la date du concours");
+            return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        if (r.getDateLimiteConcours().compareTo(r.getDatePassage())>0){
+            errors.put("datePassage", "Date limite de Concours doit etre inferieure a la date de passage du concours");
+            errors.put("dateLimiteConcours", "Date limite de Concours doit etre inferieure a la date de passage du concours");
+            return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+        }
+
+
         if (bindingResult.hasErrors()){
             for (FieldError fd:bindingResult.getFieldErrors()) {
                 errors.put(fd.getField(), fd.getDefaultMessage());
@@ -140,7 +154,7 @@ public class RestConcoursController {
             if(c.getEtat() == true) {
                 for (Profils p : c.getProfils()) {
                     if (p.getIntitled().equalsIgnoreCase(pro)) {
-                        colRes.add(new Recherche(c.getIdConcours(),c.getDateLimiteConcours(), c.getDatePassage(), c.getIntitled(), c.getNombrePostes(), c.getExigences()));
+                        colRes.add(new Recherche(c.getIdConcours(),c.getDateLimiteConcours(), c.getDatePassage(), c.getIntitled(), c.getNombrePostes(), c.getExigences(),c.getResultats()));
                         break;
                     }
                 }

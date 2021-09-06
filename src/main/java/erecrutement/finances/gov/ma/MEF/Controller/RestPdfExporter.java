@@ -13,8 +13,10 @@ import erecrutement.finances.gov.ma.MEF.Services.IEmailSending;
 import erecrutement.finances.gov.ma.MEF.Services.PDFExporterService;
 import erecrutement.finances.gov.ma.MEF.Services.ResultatsPreselectionExportPdf;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.annotation.AccessType;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -84,7 +86,8 @@ public class RestPdfExporter {
     }
 
 
-    @GetMapping  (path = "/users/export/pdf/Resultats/{id}",consumes = {"application/json;charset=UTF-8"})
+    @RequestMapping(path = "exportResultats/{id}",method = RequestMethod.GET)
+
     public ResponseEntity<Object> exportResultsToPDF(HttpServletResponse response, @PathVariable("id") int id) throws DocumentException, IOException {
 
         Resultats resultatss =resultatsDAO.leResultat(id);
@@ -141,6 +144,13 @@ public class RestPdfExporter {
 
     }
 
+
+
+    @GetMapping("/download/Results/{id}")
+    public Resultats DownloadFile(@PathVariable("id") int id) throws Exception {
+        Concours cnc = iConcoursService.UnConcours(id);
+        return cnc.getResultats();
+    }
 
 
 }

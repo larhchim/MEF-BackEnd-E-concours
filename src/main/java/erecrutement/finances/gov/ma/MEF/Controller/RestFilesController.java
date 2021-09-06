@@ -38,4 +38,8 @@ public class RestFilesController implements IFileController{
     public ResponseEntity<String> DeleteFile(@PathVariable("file") String file) throws Exception {
         return files.DeleteFile(file);
     }
+
+
+
+
 }

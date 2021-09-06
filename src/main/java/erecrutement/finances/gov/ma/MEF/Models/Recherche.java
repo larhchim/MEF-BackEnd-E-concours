@@ -13,14 +13,25 @@ public class Recherche {
     private String intitled;
     private int nombrePostes;
     private String exigences;
+    private Resultats resultats;
 
-    public Recherche(int idConcours, Date dateLimiteConcours, Date datePassage, String intitled, int nombrePostes, String exigences) {
+    public Recherche(int idConcours, Date dateLimiteConcours, Date datePassage, String intitled, int nombrePostes, String exigences, Resultats resultats) {
         this.idConcours = idConcours;
         this.dateLimiteConcours = dateLimiteConcours;
         this.datePassage = datePassage;
         this.intitled = intitled;
         this.nombrePostes = nombrePostes;
         this.exigences = exigences;
+        this.resultats =resultats;
+    }
+
+
+    public Resultats getResultats() {
+        return resultats;
+    }
+
+    public void setResultats(Resultats resultats) {
+        this.resultats = resultats;
     }
 
     public int getIdConcours() {

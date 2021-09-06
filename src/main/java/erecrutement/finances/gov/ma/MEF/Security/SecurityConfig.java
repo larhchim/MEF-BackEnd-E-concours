@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-       http.authorizeRequests().antMatchers("/AllProfiles","/SearchBYProf/**","/file/**","/login/**","/AddInscription/**","**/**","/users/**","/RecoveryPass/**","/UpdateRecover/**").permitAll();
+       http.authorizeRequests().antMatchers("/AllProfiles","/SearchBYProf/**","/file/**","/login/**","/AddInscription/**","**/**","/users/**","/RecoveryPass/**","/UpdateRecover/**","/download/Results/**").permitAll();
 
         http.authorizeRequests().antMatchers("/SearchGestionnaires","/UpdateGest/**","/AddGest","/ModifyDir/**").hasAuthority("ADMIN");
 
@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .access("hasAuthority('ADMIN') or hasAuthority('GESTLV1') or hasAuthority('GESTLV2')");
 
 
-        http.authorizeRequests().antMatchers("/addCentre","/addConcours","/ProfilsManqueGrade/**","UpdateGrade/**","/AddGrade","/addProfile","/UpdateProfile/**","/AllSubscriptions")
+        http.authorizeRequests().antMatchers("/addCentre","/addConcours","/ProfilsManqueGrade/**","UpdateGrade/**","/AddGrade","/addProfile","/UpdateProfile/**","/AllSubscriptions","/exportResultats")
                 .access("hasAuthority('ADMIN') or hasAuthority('GESTLV1')");
 
 
